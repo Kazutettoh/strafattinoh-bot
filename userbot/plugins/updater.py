@@ -44,8 +44,8 @@ IS_SELECTED_DIFFERENT_BRANCH = (
     "in this case, Updater is unable to identify the branch to be updated."
     "please check out to an official branch, and re-start the updater."
 )
-OFFICIAL_UPSTREAM_REPO = "https://github.com/IIOOIIOIIOOII/USERBOT-ITA"
-BOT_IS_UP_TO_DATE = "`Update in corso.\nGrazie per aver utilizzato il servizio.`"
+OFFICIAL_UPSTREAM_REPO = "https://github.com/KronosXY/krono-botXY"
+BOT_IS_UP_TO_DATE = "`Update in corso.\nGrazie per aver aggiornato.`"
 NEW_BOT_UP_DATE_FOUND = (
     "new update found {branch_name}\n"
     "changelog: \n\n{changelog}\n"
@@ -100,7 +100,7 @@ async def updater(message):
     )
 
     if not changelog:
-        await message.edit("`Updating...`")
+        await message.edit("`Update...`")
         await asyncio.sleep(8)
  
     message_one = NEW_BOT_UP_DATE_FOUND.format(
