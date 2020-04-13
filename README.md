@@ -1,6 +1,5 @@
-# FORK AT YOUR OWN RISK
-# Installing
-Join https://t.me/IOIIOIIIOIIOI for updates
+# INSTALLING
+Join https://t.me/IOIIIOIIIOI for updates
 ### The Easy Way
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
@@ -9,8 +8,8 @@ Join https://t.me/IOIIOIIIOIIOI for updates
 
 Simply clone the repository and run the main file:
 ```sh
-git clone https://github.com/IIOOIIOIIOOII/USERBOT-ITA
-cd USERBOT-ITA
+git clone https://github.com/KronosXY/krono-botXY
+cd krono-botXY
 virtualenv -p /usr/bin/python3 venv
 . ./venv/bin/activate
 pip install -r requirements.txt
