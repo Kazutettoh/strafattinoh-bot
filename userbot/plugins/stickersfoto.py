@@ -54,7 +54,7 @@ async def _(event):
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
-    await event.edit(" `javes: making......`")
+    await event.edit(" `javes: making...`")
     async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=164977173))
@@ -67,7 +67,7 @@ async def _(event):
              await event.edit("```privacy error```")
           else:
           	if response.text.startswith("Select"):
-          		await event.edit("`Please vai su` @DrWebBot `e select your language.`") 
+          		await event.edit("`Please vai su` @DrWebBot `e select la lingua.`") 
           	else: 
           			await bot.send_file(event.chat_id, response.message.media)
 
