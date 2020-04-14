@@ -1,24 +1,19 @@
 """Emoji
-
 Available Commands:
-
 .emoji shrug
-
 .emoji apple
-
 .emoji :/
-
 .emoji -_-"""
 
 from telethon import events
 
 import asyncio
 
-
-
 from userbot import CMD_HELP
 
 from userbot.utils import admin_cmd
+
+
 
 @borg.on(admin_cmd(pattern=f"smoon", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
@@ -56,8 +51,6 @@ async def _(event):
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 8])
-
-
 
 
 
@@ -122,3 +115,10 @@ async def _(event):
 
             await event.edit(animation_chars[i % 117])
 
+
+
+@borg.on(admin_cmd(pattern=r"lmoon"))
+async def test(event):
+    if event.fwd_from:
+        return 
+    await event.edit("🌕🌕🌕🌕🌕🌕🌕🌕\n🌕🌕🌖🌔🌖🌔🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌖🌓🌗🌔🌕🌕\n🌕🌕🌗🌑🌑🌓🌕🌕\n🌕🌕🌗👀🌑🌓🌕🌕\n🌕🌕🌘👄🌑🌓🌕🌕\n🌕🌕🌗🌑🌑🌒🌕🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌕🌘🌑🌑🌑🌑🌒🌕\n🌖🌑🌑🌑🌑🌑🌑🌔\n🌕🤜🏻🌑🌑🌑🌑🤛🏻🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌘🌑🌑🌑🌑🌑🌑🌒\n🌕🌕🌕🌕🌕🌕🌕🌕")
