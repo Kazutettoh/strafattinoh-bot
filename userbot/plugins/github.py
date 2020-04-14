@@ -25,13 +25,13 @@ async def _(event):
         created_at = b["created_at"]
         await borg.send_file(
             event.chat_id,
-            caption="""Name: [{}]({})
-Type: {}
-Company: {}
+            caption="""**Nome: [{}]({})
+Tipo: {}
+Azienda: {}
 Blog: {}
-Location: {}
+Località: {}
 Bio: {}
-Profile Created: {}""".format(name, html_url, gh_type, company, blog, location, bio, created_at),
+Profilo Creato: {}**""".format(name, html_url, gh_type, company, blog, location, bio, created_at),
             file=avatar_url,
             force_document=False,
             allow_cache=False,
