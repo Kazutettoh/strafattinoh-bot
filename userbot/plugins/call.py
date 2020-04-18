@@ -1,23 +1,17 @@
 """Emoji
-
 Available Commands:
-
 .emoji shrug
-
 .emoji apple
-
 .emoji :/
-
 .emoji -_-"""
 
 from telethon import events
+from userbot.utils import admin_cmd
 
 import asyncio
 
 
-
-
-
+@borg.on(admin_cmd(pattern=f"call", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 
 async def _(event):
@@ -38,24 +32,24 @@ async def _(event):
 
         animation_chars = [
         
-            "`Connecting To Telegram Headquarters...`",
-            "`Call Connected.`",
-            "`Telegram: Hello This is Telegram HQ. Who is this?`",
-            "`Me: Yo this is` @Dark_Princ3 ,`Please Connect me to my lil bro,Pavel Durov`",
-            "`User Authorised.`",
-            "`Calling Pavel Durov`  `At +916969696969`",
-            "`Private  Call Connected...`",
-            "`Me: Hello Sir, Please Ban This Telegram Account.`",    
-            "`Pavel: May I Know Who Is This?`",
-            "`Me: Yo Brah, I Am` @Dark_Princ3 ",
-            "`Pavel: OMG!!! Long time no see, Wassup Brother...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.`",
-            "`Me: Thanks, See You Later Brah.`",
-            "`Pavel: Please Don't Thank Brah, Telegram Is Our's. Just Gimme A Call When You Become Free.`",
-            "`Me: Is There Any Issue/Emergency???`",
-            "`Pavel: Yes Sur, There Is A Bug In Telegram v69.6.9.\nI Am Not Able To Fix It. If Possible, Please Help Fix The Bug.`",
-            "`Me: Send Me The App On My Telegram Account, I Will Fix The Bug & Send You.`",
-            "`Pavel: Sure Sur \nTC Bye Bye :)`",
-            "`Private Call Disconnected.`"
+            "`Chiamata alla sede di Telegram...`",
+            "`Chiamata Connessa`",
+            "`Telegram: Salve, risponde la sede di Telegram. Chi è lei?`",
+            "`Io: Salve sono` @IOIIIOIIIOI ,`Devo parlare con il mio socio ,Pavel Durov`",
+            "`User Autorizzato.`",
+            "`Chiamata a Pavel Durov` `+6969696969`",
+            "`Chiamata Connessa`",  
+            "`Io: Ti prego di bannare questo account da Telegram`",
+            "`Pavel: Posso sapere chi sei?`",
+            "`Io: Yo bro, Sono` @IOIIIOIIIOI ",
+            "`Pavel: OMG!!! Ma è da tanto che non ci vediamo, bro...\nMi assicurerò io che l'account venga bloccato entro 24 ore.`",
+            "`Io: Grazie, a dopo bro.`",
+            "`Pavel: Ma va bro, Telegram è nostro. Chiamami quando sei libero`",
+            "`Io: C'è qualche problema bro?🤔`",
+            "`Pavel: Sì bro, c'è un bug in Telegram v8.6.9.\nNon sono in grado di risolverlo. Mi, aiuti a correggere il bug?`",
+            "`Io: Inviami tutto sul mio Telegram, risolverò il bug.`",
+            "`Pavel: Grazie bro \nCi sentiamo :)`",
+            "`Chiamata Disconnessa.`"
         ]
 
         for i in animation_ttl:
