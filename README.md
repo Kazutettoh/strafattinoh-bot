@@ -1,51 +1,57 @@
-# INSTALLING
-Join https://t.me/IOIIIOIIIOI for updates
-### The Easy Way
+# kRONO-BOTXY
+
+## Gruppo Telegram
+
+Entra nel Gruppo ***[DA QUI](https://t.me/IOIIIOIIIOI)*** per supporto e info.
+
+***
+
+## INSTALLAZIONE VELOCE DA HEROKU
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-### The Normal Way
+## INSTALLAZIONE DA TERMINALE
 
-Simply clone the repository and run the main file:
+Clona il repository e avvia il file principale:
+
 ```sh
 git clone https://github.com/KronosXY/krono-botXY
 cd krono-botXY
 virtualenv -p /usr/bin/python3 venv
 . ./venv/bin/activate
 pip install -r requirements.txt
-# <Create local_config.py with variables as given below>
+# <Crea local_config.py con le tue variabili>
 python3 -m userbot
 ```
 
-An example `local_config.py` file could be:
+Esempio di `local_config.py` file:
 
-**Not All of the variables are mandatory**
+***Non tutte le variabili sono obbligatorie**
 
-__The Userbot should work by setting only the first two variables__
+***L'userbot si avvia basta impostare le due Var:**
 
 ```python3
-from heroku_config import Var
+da heroku_config importa le Var
 
-class Development(Var):
-  APP_ID = 6
-  API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
+Development(Var):
+  APP_ID =
+  API_HASH =
 ```
 
-### UniBorg Configuration
+**UniBorg Config**
+La Config UniBorg Config è situata in `userbot/uniborgConfig.py`.
 
-The UniBorg Config is situated in `userbot/uniborgConfig.py`.
+**Heroku Config**
+Basta lasciare da predefinita.
 
-**Heroku Configuration**
-Simply just leave the Config as it is.
+**Local Config**
+Cerca la Linea 111 e inizia a modificare da li.
+Per UniBorg Config non ci sono Var obligatorie.
 
-**Local Configuration**
-Check [Line 111](https://github.com/Total-Noob-69/X-tra-Telegram/blob/master/userbot/uniborgConfig.py#L111) and start adding your vars there.
-Fortunately there are no Mandatory vars for the UniBorg Support Config.
+## Var Obbligatorie
 
-## Mandatory Vars
-
-- Only two of the environment variables are mandatory.
-- This is because of `telethon.errors.rpc_error_list.ApiIdPublishedFloodError`
-    - `APP_ID`:   You can get this value from https://my.telegram.org
-    - `API_HASH`:   You can get this value from https://my.telegram.org
-- The userbot will not work without setting the mandatory vars.
+- Solo queste due variabili sono obbligatorie se non inserite
+- Questo causa `telethon.errors.rpc_error_list.ApiIdPublishedFloodError`
+  - `APP_ID`: Valore da ottenere da <https://my.telegram.org>
+    - `API_HASH`: Valore da ottenere da <https://my.telegram.org>
+  
