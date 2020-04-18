@@ -1,12 +1,8 @@
 # kRONO-BOTXY
 
-## Gruppo Telegram
-
-Entra nel Gruppo ***[DA QUI](https://t.me/IOIIIOIIIOI)*** per supporto e info.
-
 ***
 
-## INSTALLAZIONE VELOCE DA HEROKU
+## INSTALLAZIONE DA HEROKU
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -21,21 +17,20 @@ virtualenv -p /usr/bin/python3 venv
 . ./venv/bin/activate
 pip install -r requirements.txt
 # <Crea local_config.py con le tue variabili>
+
 python3 -m userbot
 ```
 
 Esempio di `local_config.py` file:
 
-***Non tutte le variabili sono obbligatorie**
-
-***L'userbot si avvia basta impostare le due Var:**
+**Non tutte le Var sono obbligatorie basta impostare le due Var sotto:**
 
 ```python3
-da heroku_config importa le Var
+from heroku_config import Var
 
-Development(Var):
-  APP_ID =
-  API_HASH =
+class Development(Var):
+  APP_ID = 6
+  API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
 ```
 
 **UniBorg Config**
@@ -50,8 +45,8 @@ Per UniBorg Config non ci sono Var obligatorie.
 
 ## Var Obbligatorie
 
-- Solo queste due variabili sono obbligatorie se non inserite
-- Questo causa `telethon.errors.rpc_error_list.ApiIdPublishedFloodError`
+- Solo queste due variabili sono obbligatorie:
   - `APP_ID`: Valore da ottenere da <https://my.telegram.org>
-    - `API_HASH`: Valore da ottenere da <https://my.telegram.org>
+  - `API_HASH`: Valore da ottenere da <https://my.telegram.org>
+- Se non ci sono causerà: `telethon.errors.rpc_error_list.ApiIdPublishedFloodError`
   
