@@ -1,13 +1,6 @@
-from os import remove
-from os import execl
-import sys
-
-from git import Repo
-from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
-
-# from uniborg import CMD_HELP, bot
-# from uniborg.events import register
-
+"""Shouts a message in MEME way
+usage: .sos message
+"""
 
 import asyncio
 import random
@@ -24,7 +17,7 @@ from telethon import events
 
 from uniborg.util import admin_cmd
 
-@borg.on(admin_cmd("i ?(.*)", outgoing=True))
+@borg.on(admin_cmd("sos ?(.*)", outgoing=True))
 async def king(e):
     await e.edit(
         "\n▒▒▒▒▒▒▒▒▒"
@@ -59,5 +52,4 @@ async def king(e):
         "\n▒▒▒▒▒▒▒▒▒"
         "\n▒███████▒"
         "\n▒▒▒▒▒▒▒▒▒")
-        
         
