@@ -10,8 +10,8 @@ PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome selezionato, cerca il messaggio in** @XtraTgBot"
-USER_BOT_WARN_ZERO = "`Stai spammando troppi messaggi, sei bloccato dall'userbot.` **Io sono impegnato** "
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome selezionato genio**"
+USER_BOT_WARN_ZERO = "`Stai spammando troppo, sei bloccato dall'userbot.` **Io sono impegnato 👎** "
 USER_BOT_NO_WARN = ("[──▄█▀█▄─────────██ \n▄████████▄───▄▀█▄▄▄▄ \n██▀▼▼▼▼▼─▄▀──█▄▄ \n█████▄▲▲▲─▄▄▄▀───▀▄ \n██████▀▀▀▀─▀────────▀▀](tg://user?id=742506768)\n\n"
                     "`SECUTITY SISTEM BOT.Specifica il motivo perchè sei qui,`"
                     f"{DEFAULTUSER} 😎.\n\n"
@@ -50,14 +50,14 @@ if Var.PRIVATE_GROUP_ID is not None:
             if not pmpermit_sql.is_approved(chat.id):
                 if not chat.id in PM_WARNS:
                     pmpermit_sql.approve(chat.id, "outgoing")
-                    bruh = "__🔍🆕 user in white list pms ❕❕❕.__"
+                    bruh = "__🔍🆕 user in white list❕.__"
                     rko = await borg.send_message(event.chat_id, bruh)
                     await asyncio.sleep(3)
                     await rko.delete()
 
 
-    @command(pattern="^.blocca ?(.*)")
-    async def approve_p_m(event):
+    @command(pattern="^.block ?(.*)")
+    async def block_p_m(event):
         if event.fwd_from:
             return
         replied_user = await event.client(GetFullUserRequest(event.chat_id))
@@ -121,7 +121,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             # userbot's should not reply to other userbot's
             # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
             return
-        sender = await bot.get_entity(chat_id)
+        sender = await event.sender
 
         if chat_id == bot.uid:
 
