@@ -11,12 +11,12 @@ PREV_REPLY_MESSAGE = {}
 
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome selezionato genio**"
-USER_BOT_WARN_ZERO = "`Stai spammando troppo, sei bloccato dall'userbot.` **Io sono impegnato 👎** "
+USER_BOT_WARN_ZERO = "**Stai spammando troppo sei bloccato dall'userbot.Io sono impegnato 👎** "
 USER_BOT_NO_WARN = ("[──▄█▀█▄─────────██ \n▄████████▄───▄▀█▄▄▄▄ \n██▀▼▼▼▼▼─▄▀──█▄▄ \n█████▄▲▲▲─▄▄▄▀───▀▄ \n██████▀▀▀▀─▀────────▀▀](tg://user?id=742506768)\n\n"
-                    "`SECUTITY SISTEM BOT.Specifica il motivo perchè sei qui,`"
+                    "**SECUTITY SISTEM BOT.Specifica il motivo perchè sei qui**"
                     f"{DEFAULTUSER} 😎.\n\n"
-                    "Lascia il tuo nome, numero di telefono, indirizzo e 500€, risponderò entro 24h.`\n\n"
-                    "**Premi** `/start` ** per scegliere il motivo della chat.**")
+                    "**Lascia il tuo tag, numero di telefono e 500€, risponderò entro 24h.**\n\n"
+                    "**Premi /start per scegliere il motivo della chat.**")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
@@ -50,7 +50,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             if not pmpermit_sql.is_approved(chat.id):
                 if not chat.id in PM_WARNS:
                     pmpermit_sql.approve(chat.id, "outgoing")
-                    bruh = "__🔍🆕 user in white list❕.__"
+                    bruh = "__🔍🆕 user in white list❕__"
                     rko = await borg.send_message(event.chat_id, bruh)
                     await asyncio.sleep(3)
                     await rko.delete()
@@ -77,7 +77,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         if event.fwd_from:
             return
         approved_users = pmpermit_sql.get_all_approved()
-        APPROVED_PMs = "ℹ️USER APPROVATIℹ️\n"
+        APPROVED_PMs = "ℹ️ USER APPROVATI ℹ️\n"
         if len(approved_users) > 0:
             for a_user in approved_users:
                 if a_user.reason:
