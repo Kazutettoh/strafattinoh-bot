@@ -15,7 +15,7 @@ from userbot import ALIVE_NAME, LESS_SPAMMY
 from userbot.utils import admin_cmd
 
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Nessun nome selezionato, cerca il messaggio in @XtraTgBot"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome selezionato genio**"
 PREV_REPLY_MESSAGE = {}
 
 
@@ -32,22 +32,22 @@ async def _(event):
                   "`1`. Donna\n"
                   "`2`. Uomo\n"
                   "`3`. Altro\n")
-         PM = ("`Ciao. Questo è il mio menù avviabile,`"
+         PM = ("`Questo è il menù avviabile di, `"
                f"{DEFAULTUSER}.\n"
-               "__Indica il motivo perchè sei qui.__\n"
+               "__Indica il motivo perchè sei qui__\n"
                "**Scegli tra uno di questi motivi:**\n\n"
                "`1`. Per chattare con me\n"
                "`2`. Per spammare in chat.\n"
                "`3`. Per inviare nudes.\n"
                "`4`. Per domandare qualcosa\n"
                "`5`. Per richiedere qualcosa\n")
-         ONE = ("__Va bene. La tua richiesta è stata registrata. Non spammare in chat.Avrai una risposta entro 24H. Sono impegnato, a differenza probabilmente.__\n\n"
-                "**⚠️ Verrai bloccato e segnalato se continui a spammare. ⚠️**\n\n"
+         ONE = ("__La tua richiesta è stata registrata, non spammare in chat avrai una risposta entro 24H. Sono impegnato, a differenza tua probabilmente.__\n\n"
+                "**⚠️ Verrai bloccato dal bot se continui a spammare ti avviso ⚠️**\n\n"
                 "__Premi__ `/start` __per tornare al menù principale__")
          TWO = (" `███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ `\n\n**Ti avevo avvisato. Vai a dare fastidio ad altri,sei stato bloccato e segnalato, quando vedo ti sblocco.**")
-         FOUR = ("__Va bene. Non ho visto il tuo messaggio.Di solito rispondo a tutti anche ai ritardati.__\n __Quando torno ti rispondo, se voglio.Ho troppe chat aperte😶__\n **Please non spammare se non vuoi essere bloccato e segnalato.**")
-         FIVE = ("`Va bene,non inviare altri messaggi non ci sono. Ti risponderò il al più presto.`\n**Non continuare, altrimenti verrai segnalato e bloccato.**")
-         LWARN = ("**Ultimo avviso. Non inviare un altro messeggio altrimenti verrai bloccato e segnalato. Attendi ti risponderò al più presto.**\n__Premi__ `/start` __per tornare al menù principale.__")
+         FOUR = ("__Va bene, non ho visto il tuo messaggio di solito rispondo a tutti anche ai ritardati.__\n__Quando torno ti rispondo, se voglio.Ho troppe chat aperte😶__\n**Please non spammare se non vuoi essere bloccato dal bot.**")
+         FIVE = ("`Va bene,chiedi pure ma scrivi tutto in un messaggio non ci sono.Ti risponderò al più presto.`\n**⚠️ Non continuare, altrimenti verrai bloccato dal bot. ⚠️**")
+         LWARN = ("**⚠️ Ultimo avviso ⚠️ Non inviare un altro messeggio altrimenti verrai bloccato e segnalato. Attendi ti risponderò al più presto.**\n__Premi__ `/start` __per tornare al menù principale.__")
      
         async with borg.conversation(chat) as conv:
          await borg.send_message(chat, PM)
@@ -109,7 +109,7 @@ async def _(event):
                          await asyncio.sleep(3)
                          await event.client(functions.contacts.BlockRequest(chat_id))
              elif x == "3":
-                 await borg.send_message(chat, "`Scegli il tuo sesso prima di inviare nudes.\n Non ti sto giudicando, ma se non sei donna evita.\n Non inviare più messaggi, ti rispondo quando sono online.`")
+                 await borg.send_message(chat, "`Scegli il tuo sesso prima di inviare nudes.\n Non ti giudico, ma se non sei donna evita.\n Non inviare più messaggi, ti rispondo quando sono online.`")
                  response = await conv.get_response(chat)
                  if not response.text == "/start":
                      await borg.send_message(chat, LWARN)
@@ -122,7 +122,7 @@ async def _(event):
                          await asyncio.sleep(3)
                          await event.client(functions.contacts.BlockRequest(chat_id))
              else:
-                 await borg.send_message(chat, "__Comando non valido. Premi__ `/start` __ non inviare altri messaggi se non vuoi essere bloccato e segnalato.__")
+                 await borg.send_message(chat, "__Comando non valido. Premi__ `/start` __ non inviare altri messaggi se non vuoi essere bloccato dal bot.__")
                  response = await conv.get_response(chat)
                  if not response.text.startswith("/start"):
                      await borg.send_message(chat, TWO)
@@ -152,7 +152,7 @@ async def _(event):
                      await asyncio.sleep(3)
                      await event.client(functions.contacts.BlockRequest(chat_id))
          else:
-             await borg.send_message(chat, "`Comando non valido. Premi /start non inviare altri messaggi se non vuoi essere bloccato e segnalato.`")
+             await borg.send_message(chat, "`Comando non valido. Premi /start non inviare altri messaggi se non vuoi essere bloccato dal bot.`")
              response = await conv.get_response(chat)
              z = response.text
              if not z == "/start":
@@ -162,5 +162,4 @@ async def _(event):
                      await borg.send_message(chat, TWO)
                      await asyncio.sleep(3)
                      await event.client(functions.contacts.BlockRequest(chat_id))
-
 

@@ -13,10 +13,10 @@ PREV_REPLY_MESSAGE = {}
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome selezionato genio**"
 USER_BOT_WARN_ZERO = "**Stai spammando troppo sei bloccato dall'userbot.Io sono impegnato 👎** "
 USER_BOT_NO_WARN = ("[──▄█▀█▄─────────██ \n▄████████▄───▄▀█▄▄▄▄ \n██▀▼▼▼▼▼─▄▀──█▄▄ \n█████▄▲▲▲─▄▄▄▀───▀▄ \n██████▀▀▀▀─▀────────▀▀](tg://user?id=742506768)\n\n"
-                    "**SECUTITY SISTEM BOT.Specifica il motivo perchè sei qui**"
-                    f"{DEFAULTUSER} 😎.\n\n"
-                    "**Lascia il tuo tag, numero di telefono e 500€, risponderò entro 24h.**\n\n"
-                    "**Premi /start per scegliere il motivo della chat.**")
+                    "**😎 SECUTITY SISTEM BOT 😎 Specifica il motivo perchè cerchi **"
+                    f"{DEFAULTUSER} \n\n"
+                    "**Lascia il tuo tag, numero di telefono e 500€ risponderò entro 24h **\n\n"
+                    "**Premi /start per scegliere il motivo della chat**")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
