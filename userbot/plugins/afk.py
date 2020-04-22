@@ -146,7 +146,7 @@ async def on_afk(event):
             else:
                 afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"__⛔️ IL MIO CAPO E OFF ⛔️ DA__ `{total_afk_time}`\nNON ROMPERE  " + \
+        message_to_reply = f"__⛔️ IL MIO CAPO È OFF ⛔️ DA__ `{total_afk_time}`\nNON ROMPERE  " + \
             f"\n\n__PROMETTO CHE TORNO PRESTO BITCH 🖕__\n**MOTIVO**: {reason}" \
             if reason \
             else f"**⛔️ AL MOMENTO SONO OFF ⛔️**\n__QUINDI NON ROMPERE IL CAZZO SPAMMANDO GRAZIE ‼️__\nAPPENA TORNO CERCO DI RISPONDERE A TUTTI BYE ** 👍 **  "
