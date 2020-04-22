@@ -8,6 +8,15 @@ from telethon.errors import (ChannelInvalidError, ChannelPrivateError, ChannelPu
 from telethon.utils import get_input_location
 from userbot import CMD_HELP
 from userbot.events import register, errors_handler
+from telethon import events
+import asyncio
+from telethon.tl.types import User, Chat, Channel
+from userbot.utils import admin_cmd
+import time
+from telethon.events import NewMessage
+from telethon.tl.custom import Dialog
+
+
 
 @register(pattern=".chatinfo(?: |$)(.*)", outgoing=True)
 @errors_handler
@@ -91,7 +100,6 @@ async def fetch_info(chat, event):
     members = chat.full_chat.participants_count if hasattr(chat.full_chat, "participants_count") else chat_obj_info.participants_count
     admins = chat.full_chat.admins_count if hasattr(chat.full_chat, "admins_count") else None
     banned_users = chat.full_chat.kicked_count if hasattr(chat.full_chat, "kicked_count") else None
-    restrcited_users = chat.full_chat.banned_count if hasattr(chat.full_chat, "banned_count") else None
     members_online = chat.full_chat.online_count if hasattr(chat.full_chat, "online_count") else 0
     group_stickers = chat.full_chat.stickerset.title if hasattr(chat.full_chat, "stickerset") and chat.full_chat.stickerset else None
     messages_viewable = msg_info.count if msg_info else None
@@ -102,10 +110,6 @@ async def fetch_info(chat, event):
     bots_list = chat.full_chat.bot_info  # this is a list
     bots = 0
     supergroup = "<b>Yes</b>" if hasattr(chat_obj_info, "megagroup") and chat_obj_info.megagroup else "No"
-    slowmode = "<b>Yes</b>" if hasattr(chat_obj_info, "slowmode_enabled") and chat_obj_info.slowmode_enabled else "No"
-    slowmode_time = chat.full_chat.slowmode_seconds if hasattr(chat_obj_info, "slowmode_enabled") and chat_obj_info.slowmode_enabled else None
-    restricted = "<b>Yes</b>" if hasattr(chat_obj_info, "restricted") and chat_obj_info.restricted else "No"
-    verified = "<b>Yes</b>" if hasattr(chat_obj_info, "verified") and chat_obj_info.verified else "No"
     username = "@{}".format(username) if username else None
     creator_username = "@{}".format(creator_username) if creator_username else None
     #end of spaghetti block
@@ -122,73 +126,50 @@ async def fetch_info(chat, event):
         for bot in bots_list:
             bots += 1
 
-    caption = "<b>CHAT INFO:</b>\n"
-    caption += f"ID: <code>{chat_obj_info.id}</code>\n"
+    caption = "<b>📌 CHAT INFO:</b>\n\n"
+    caption += f"  ★ ID: <code>{chat_obj_info.id}</code>\n"
     if chat_title is not None:
-        caption += f"{chat_type} nome: {chat_title}\n"
+        caption += f"  ★ {chat_type} : {chat_title}\n"
     if former_title is not None:  # Meant is the very first title
-        caption += f"Former name: {former_title}\n"
+        caption += f"  ★ Former name: {former_title}\n"
     if username is not None:
-        caption += f"{chat_type} type: Public\n"
-        caption += f"Link: {username}\n"
+        caption += f"  ★ {chat_type} : Pubblico\n"
+        caption += f"  ★ Link: {username}\n"
     else:
-        caption += f"{chat_type} type: Private\n"
+        caption += f"  ★ {chat_type} : Privato\n"
     if creator_username is not None:
-        caption += f"Founder: {creator_username}\n"
+        caption += f"  ★ Founder: {creator_username}\n"
     elif creator_valid:
-        caption += f"Creator: <a href=\"tg://user?id={creator_id}\">{creator_firstname}</a>\n"
+        caption += f"  ★ Founder: <a href=\"tg://user?id={creator_id}\">{creator_firstname}</a>\n"
     if created is not None:
-        caption += f"Creato: <code>{created.date().strftime('%b %d, %Y')} - {created.time()}</code>\n"
+        caption += f"  ★ Creato il: <code>{created.date().strftime('%b %d, %Y')} - {created.time()}</code>\n"
     else:
-        caption += f"Creator: <code>{chat_obj_info.date.date().strftime('%b %d, %Y')} - {chat_obj_info.date.time()}</code> {warn_emoji}\n"
-    caption += f"DC ID: {dc_id}\n"
-    if exp_count is not None:
-        chat_level = int((1+sqrt(1+7*exp_count/14))/2)
-        caption += f"{chat_type} level: <code>{chat_level}</code>\n"
+        caption += f"  ★ Creato il: <code>{chat_obj_info.date.date().strftime('%b %d, %Y')} - {chat_obj_info.date.time()}</code> {warn_emoji}\n"
+        caption += f"  ★ DC ID: {dc_id}\n"
     if messages_viewable is not None:
-        caption += f"View messaggi: <code>{messages_viewable}</code>\n"
+        caption += f"  ★ View messaggi: <code>{messages_viewable}</code>\n"
     if messages_sent:
-        caption += f"Messaggi scritti: <code>{messages_sent}</code>\n"
+        caption += f"  ★ Messaggi scritti: <code>{messages_sent}</code>\n"
     elif messages_sent_alt:
-        caption += f"Messages sent: <code>{messages_sent_alt}</code> {warn_emoji}\n"
+        caption += f"  ★ Messages sent: <code>{messages_sent_alt}</code> {warn_emoji}\n"
     if members is not None:
-        caption += f"Membri: <code>{members}</code>\n"
+        caption += f"  ★ Membri: <code>{members}</code>\n"
     if admins is not None:
-        caption += f"Admins: <code>{admins}</code>\n"
+        caption += f"  ★ Admins: <code>{admins}</code>\n"
     if bots_list:
-        caption += f"Bot: <code>{bots}</code>\n"
+        caption += f"  ★ Bot: <code>{bots}</code>\n"
     if members_online:
-        caption += f"User online: <code>{members_online}</code>\n"
-    if restrcited_users is not None:
-        caption += f"User limitati: <code>{restrcited_users}</code>\n"
+        caption += f"  ★ User online: <code>{members_online}</code>\n"
     if banned_users is not None:
-        caption += f"User bannati: <code>{banned_users}</code>\n"
+        caption += f"  ★ User bannati: <code>{banned_users}</code>\n"
     if group_stickers is not None:
-        caption += f"{chat_type} Stickers: <a href=\"t.me/addstickers/{chat.full_chat.stickerset.short_name}\">{group_stickers}</a>\n"
-    caption += "\n"
+        caption += f"  ★ {chat_type} Stickers: <a href=\"t.me/addstickers/{chat.full_chat.stickerset.short_name}\">{group_stickers}</a>\n"
     if not broadcast:
-        caption += f"Slow mode: {slowmode}"
-        if hasattr(chat_obj_info, "slowmode_enabled") and chat_obj_info.slowmode_enabled:
-            caption += f", <code>{slowmode_time}s</code>\n\n"
-        else:
-            caption += "\n\n"
-    if not broadcast:
-        caption += f"Supergruppo: {supergroup}\n\n"
-    if hasattr(chat_obj_info, "restricted"):
-        caption += f"Limitato: {restricted}\n"
-        if chat_obj_info.restricted:
-            caption += f"> Platform: {chat_obj_info.restriction_reason[0].platform}\n"
-            caption += f"> Reason: {chat_obj_info.restriction_reason[0].reason}\n"
-            caption += f"> Text: {chat_obj_info.restriction_reason[0].text}\n\n"
-        else:
-            caption += "\n"
-    if hasattr(chat_obj_info, "scam") and chat_obj_info.scam:
-    	caption += "Scam: <b>Yes</b>\n\n"
-    if hasattr(chat_obj_info, "verified"):
-        caption += f"Verificato da Telegram: {verified}\n\n"
+        caption += f"  ★ Supergruppo: {supergroup}\n\n"
     if description:
-        caption += f"Descrizione: \n<code>{description}</code>\n"
+        caption += f"<b>📌 DESCRIZIONE:</b>\n\n<code>{description}</code>\n"
     return caption
+
 
 CMD_HELP.update({
 "chatinfo":
@@ -199,19 +180,7 @@ CMD_HELP.update({
 
 """Count the Number of Dialogs you have in your Telegram Account
 Syntax: .stat"""
-from telethon import events
-import asyncio
-from datetime import datetime
-from telethon.tl.types import User, Chat, Channel
-from userbot.utils import admin_cmd
 
-import time
-from telethon.events import NewMessage
-from telethon.tl.custom import Dialog
-
-
-
-"""Type `.count` and see Magic."""
 
 @borg.on(admin_cmd(pattern='stat'))
 async def stats(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0914, R0915
