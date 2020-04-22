@@ -1,5 +1,5 @@
 """ It does not do to dwell on dreams and forget to live
-Syntax: .getime"""
+Syntax: .time"""
 
 import asyncio
 import os
@@ -11,11 +11,11 @@ from userbot.utils import admin_cmd
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
-@borg.on(admin_cmd("time ?(.*)"))  # pylint:disable=E0602
+@borg.on(admin_cmd("im ?(.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
-    current_time = datetime.now().strftime("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \n⚡USERBOT TIMEZONE⚡ \n LOCATION: Italia \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡")
+    current_time = datetime.now().strftime("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡\n USERBOT TIMEZONE \n LOCATION: Italia \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡")
     start = datetime.now()
     input_str = event.pattern_match.group(1)
     reply_msg_id = event.message.id
@@ -36,21 +36,14 @@ async def _(event):
     await borg.send_file(  # pylint:disable=E0602
         event.chat_id,
         required_file_name,
-        caption="Userbot: Powered by @XtraTgBot",
+        caption="USERBOT TIMEZONE",
         # Courtesy: @ManueI15
         reply_to=reply_msg_id
     )
     os.remove(required_file_name)
     end = datetime.now()
     time_taken_ms = (end - start).seconds
-    await event.edit("Sticker in {} secondi".format(time_taken_ms))
+    await event.edit("Stickers in {} sec".format(time_taken_ms))
     await asyncio.sleep(5)
     await event.delete()
 
-
-@borg.on(admin_cmd("gtime (.*)"))  # pylint:disable=E0602
-async def _(event):
-    if event.fwd_from:
-        return
-    input_str = event.pattern_match.group(1)
-    logger.info(input_str)  # pylint:disable=E0602
