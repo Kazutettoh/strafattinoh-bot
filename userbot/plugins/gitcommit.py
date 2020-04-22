@@ -14,26 +14,27 @@ from datetime import datetime
 from telethon import events
 from telethon.tl.types import DocumentAttributeVideo
 
-
 GIT_TEMP_DIR = "./userbot/temp/"
+
+
 @command(pattern="^.commit", outgoing=True)
 async def download(event):
     if event.fwd_from:
         return	
     if Var.GITHUB_ACCESS_TOKEN is None:
-        await event.edit("`Please ADD Proper Access Token from github.com`") 
+        await event.edit("`Please ADD Access Token da github.com`") 
         return   
     if Var.GIT_REPO_NAME is None:
-        await event.edit("`Please ADD Proper Github Repo Name of your userbot`")
+        await event.edit("`Please ADD Github Repo Name del tuo userbot`")
         return 
-    mone = await event.reply("Processing ...")
+    mone = await event.reply("Processing...")
     if not os.path.isdir(GIT_TEMP_DIR):
         os.makedirs(GIT_TEMP_DIR)
     start = datetime.now()
     reply_message = await event.get_reply_message()
     try:
         c_time = time.time()
-        print("Downloading to TEMP directory")
+        print("Download da TEMP directory")
         downloaded_file_name = await bot.download_media(
                 reply_message.media,
                 GIT_TEMP_DIR
@@ -44,8 +45,8 @@ async def download(event):
         end = datetime.now()
         ms = (end - start).seconds
         await event.delete()
-        await mone.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
-        await mone.edit("Committing to Github....")
+        await mone.edit("Download to `{}` in {} sec.".format(downloaded_file_name, ms))
+        await mone.edit("Commit su Github...")
         await git_commit(downloaded_file_name, mone)
 
 async def git_commit(file_name,mone):        
@@ -75,7 +76,7 @@ async def git_commit(file_name,mone):
             print("Committed File")
             ccess = Var.GIT_REPO_NAME
             ccess = ccess.strip()
-            await mone.edit(f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)")
+            await mone.edit(f"`Commit sul tuo Github Repo`\n\n[#PLUGIN](https://github.com/{ccess}/tree/master/userbot/plugins/)")
         except:    
             print("Cannot Create Plugin")
             await mone.edit("Cannot Upload Plugin")
