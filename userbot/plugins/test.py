@@ -1,0 +1,13 @@
+from telethon import events
+from datetime import datetime
+
+
+@command(pattern="^.test")
+async def _(event):
+    if event.fwd_from:
+        return
+    start = datetime.now()
+    await event.edit("**¯\_(ツ)_/¯**")
+    end = datetime.now()
+    ms = (end - start).microseconds / 1000
+    await event.edit("**¯\_(ツ)_/¯\n{}**".format(ms))   
