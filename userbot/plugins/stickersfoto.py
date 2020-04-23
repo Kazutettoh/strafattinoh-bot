@@ -47,21 +47,21 @@ async def _(event):
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
-       await event.edit("```reply to a photo```")
+       await event.edit("```Rispondi a una foto```")
        return
     chat = "@BuildStickerBot"
     sender = reply_message.sender
     if reply_message.sender.bot:
-       await event.edit("```Reply to actual users message.```")
+       await event.edit("```Rispondi a un user, no al bot.```")
        return
-    await event.edit(" `javes: making...`")
+    await event.edit(" `Creo Stikers...`")
     async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=164977173))
               await bot.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("```Please sblocca @BuildStickerBot e riprova```")
+              await event.reply("```Please sblocca @BuildStickerBot ```")
               return
           if response.text.startswith("Forward"):
              await event.edit("```privacy error```")
