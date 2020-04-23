@@ -76,7 +76,7 @@ async def git_commit(file_name,mone):
             print("Committed File")
             ccess = Var.GIT_REPO_NAME
             ccess = ccess.strip()
-            await mone.edit(f"`Commit sul tuo Github Repo`\n\n[#PLUGIN](https://github.com/{ccess}/tree/master/userbot/plugins/)")
+            await mone.edit(f"`Commit sul Repo GitHub`\n\n[#PLUGIN](https://github.com/{ccess}/tree/master/userbot/plugins/)")
         except:    
             print("Cannot Create Plugin")
             await mone.edit("Cannot Upload Plugin")
