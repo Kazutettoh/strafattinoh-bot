@@ -1,7 +1,4 @@
-"""Shouts a message in MEME way
-usage: .shout message
-originaly from : @corsicanu_bot
-"""
+"""COMMAND : .shout"""
 
 import sys
 from telethon import events, functions
