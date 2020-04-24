@@ -15,6 +15,20 @@ from userbot.utils import admin_cmd
 import time
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
+import sys
+from telethon import events, functions
+
+
+
+
+@borg.on(admin_cmd(pattern="dc"))  # pylint:disable=E0602
+async def _(event):
+    if event.fwd_from:
+        return
+    result = await borg(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
+    await event.edit(f"Paese : `{result.country}`\n"
+                     f"Nearest Datacenter : `{result.nearest_dc}`\n"
+                     f"Datacenter : `{result.this_dc}`")
 
 
 
@@ -171,16 +185,6 @@ async def fetch_info(chat, event):
     return caption
 
 
-CMD_HELP.update({
-"chatinfo":
-".chatinfo [optional: <reply/tag/chat id/invite link>]\
-\nUsage: Gets info of a chat. Some info might be limited due to missing permissions."})
-
-
-
-"""Count the Number of Dialogs you have in your Telegram Account
-Syntax: .stat"""
-
 
 @borg.on(admin_cmd(pattern='stat'))
 async def stats(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0914, R0915
@@ -276,3 +280,14 @@ def user_full_name(user):
     names = [i for i in list(names) if i]
     full_name = ' '.join(names)
     return full_name
+
+
+CMD_HELP.update({
+"chatinfo":
+".chatinfo [optional: <reply/tag/chat id/invite link>]\
+\nUsage: Gets info of a chat. Some info might be limited due to missing permissions."})
+
+
+
+"""Count the Number of Dialogs you have in your Telegram Account
+Syntax: .stat"""
