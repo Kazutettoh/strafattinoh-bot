@@ -36,6 +36,8 @@ from telethon.tl.types import InputMessagesFilterDocument
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import InputStickerSetID
 from telethon.tl.types import DocumentAttributeSticker
+from userbot import CMD_HELP, ALIVE_NAME
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else str(ALIVE_MSG)
 
 
 @register(outgoing=True, pattern="^.ext1(?: |$)(.*)")
@@ -43,18 +45,18 @@ async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit("```its bot i cant```")
+       await event.edit(f"`{ALIVE_NAME}: `**Rispondi ad una foto**")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
-       await event.edit("```Rispondi a una foto```")
+       await event.edit(f"`{ALIVE_NAME}: `**Rispondi ad una foto**")
        return
     chat = "@BuildStickerBot"
     sender = reply_message.sender
     if reply_message.sender.bot:
-       await event.edit("```Rispondi a un user, no al bot.```")
+       await event.edit(f"`{ALIVE_NAME}: `**Rispondi a un user, no al bot.**")
        return
-    await event.edit(" `Creo Stikers...`")
+    await event.edit(f"`{ALIVE_NAME}: `**Creo Stikers...**")
     async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=164977173))
@@ -64,10 +66,10 @@ async def _(event):
               await event.reply("```Please sblocca @BuildStickerBot ```")
               return
           if response.text.startswith("Forward"):
-             await event.edit("```privacy error```")
+             await event.edit(f"`{ALIVE_NAME}: `**privacy error**")
           else:
           	if response.text.startswith("Select"):
-          		await event.edit("`Please vai su` @DrWebBot `e select la lingua.`") 
+          		await event.edit(f"`{ALIVE_NAME}: Please vai su` @DrWebBot `e select la lingua.`") 
           	else: 
           			await bot.send_file(event.chat_id, response.message.media)
 
