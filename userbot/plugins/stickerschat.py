@@ -5,24 +5,27 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from uniborg.util import admin_cmd
+from userbot import CMD_HELP, ALIVE_NAME
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else str(ALIVE_MSG)
+
 
 @borg.on(admin_cmd(pattern="ext2 ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit("```Rispondi ad un user.```")
+       await event.edit(f"`{ALIVE_NAME}: `**Rispondi ad un user.**")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.text:
-       await event.edit("```Rispondi al messaggio di utenti.```")
+       await event.edit(f"`{ALIVE_NAME}: `**Rispondi ad un user.**")
        return
     chat = "@QuotLyBot"
     sender = reply_message.sender
     if reply_message.sender.bot:
-       await event.edit("```Rispondi a un user, no al bot.```")
+       await event.edit(f"`{ALIVE_NAME}: `**Rispondi a un user, no al bot.**")
        return
-    await event.edit("```Creo Stikers...```")
+    await event.edit(f"`{ALIVE_NAME}: `**Creo Stickers...**")
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
@@ -32,7 +35,7 @@ async def _(event):
               await event.reply("```Please sblocca @QuotLyBot ```")
               return
           if response.text.startswith("Hi!"):
-             await event.edit("```privacy error```")
+             await event.edit(f"`{ALIVE_NAME}: `**privacy error**")
           else: 
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)

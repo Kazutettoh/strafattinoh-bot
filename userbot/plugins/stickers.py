@@ -29,7 +29,7 @@ from telethon.tl.types import (
 from userbot.utils import admin_cmd
 from userbot import ALIVE_NAME
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Nessun nome selezionato genio"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "senza nome"
 FILLED_UP_DADDY = "Invalid pack selected."
 
 @borg.on(admin_cmd(pattern="sticker ?(.*)"))
@@ -52,7 +52,7 @@ async def _(event):
     userid = event.from_id
     packname = f"{user.first_name} Pack Vol.{pack}"
     packshortname = f"vol_{pack}_with_{userid}"
-    await event.edit("`Vediamo ora ti derubo ehehe!\nMi sa che ti inculo lo Sticker :)`")
+    await event.edit("`Ora ti derubo ehehe!\nMi sa che ti inculo lo Sticker :)`")
 
     is_a_s = is_it_animated_sticker(reply_message)
     file_ext_ns_ion = "Anubis69_roxx.png"
@@ -80,7 +80,7 @@ async def _(event):
         now = datetime.datetime.now()
         dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
-            await event.edit("`Creato a new pack!`")
+            await event.edit("`Creato new pack!`")
             await silently_send_message(bot_conv, "/cancel")
             if is_a_s:
                 response = await silently_send_message(bot_conv, "/newanimated")

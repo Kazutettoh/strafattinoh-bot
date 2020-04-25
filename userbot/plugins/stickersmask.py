@@ -40,7 +40,7 @@ from userbot import CMD_HELP, ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else str(ALIVE_MSG)
 
 
-@register(outgoing=True, pattern="^.ext2(?: |$)(.*)")
+@register(outgoing=True, pattern="^.ext3(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return 
@@ -56,7 +56,7 @@ async def _(event):
     if reply_message.sender.bot:
        await event.edit(f"`{ALIVE_NAME}: `**Rispondi a un user, no al bot.**")
        return
-    await event.edit(f"`{ALIVE_NAME}: `**Creo Stikers...**")
+    await event.edit(f"`{ALIVE_NAME}: `**Creo Stickers...**")
     async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=905164246))
