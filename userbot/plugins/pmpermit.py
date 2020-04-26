@@ -13,13 +13,12 @@ CACHE = {}
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome**"
 USER_BOT_WARN_ZERO = "**Stai spammando troppo sei bloccato dal bot. Io sono impegnato 👎** "
-USER_BOT_NO_WARN = ("[▬▬▬▬ ✪ ▬▬▬▬ ✪ ▬▬▬▬ ✪ ▬▬▬▬](tg://user?id=742506768)\n\n"
-                    "   **⚠️ SYSTEM SECURITY BOT ⚠️ **\n"
+USER_BOT_NO_WARN = ("[▬▬▬ ✪ SYSTEM SECURITY BOT ✪ ▬▬▬](tg://user?id=742506768)\n\n"
                     "**Specifica il motivo perchè cerchi **"
                     f"{DEFAULTUSER} \n\n"
-                    "**Lascia il tuo tag, numero di telefono e 500€ risponderò entro 24h **\n\n"
+                    "**Lascia il tuo tag e numero di telefono rispondo entro 24h **\n\n"
                     "**Premi /start per scegliere il motivo della chat**\n\n"
-                    " ▬▬▬▬ ✪ ▬▬▬▬ ✪ ▬▬▬▬ ✪ ▬▬▬▬ ")
+                    " ▬▬▬▬ ✪ ▬▬▬▬▬▬▬▬▬▬▬ ✪ ▬▬▬▬ ")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
@@ -88,7 +87,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 else:
                     APPROVED_PMs += f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id})\n"
         else:
-            APPROVED_PMs = "Non approvato in chat"
+            APPROVED_PMs = "**Lista vuota**"
         if len(APPROVED_PMs) > 4095:
             with io.BytesIO(str.encode(APPROVED_PMs)) as out_file:
                 out_file.name = "approved.pms.text"
