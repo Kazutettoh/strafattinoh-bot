@@ -1,11 +1,13 @@
 """
 Available Commands:
-.sex
+.bombs
 .fuck
 .kiss
-.pornhub
 .love
+.pornhub
+.sex
 .sexy"""
+
 
 
 from telethon import events
@@ -16,25 +18,46 @@ import asyncio
 
 
 
+@borg.on(admin_cmd(pattern=f"bombs", allow_sudo=True))
+@borg.on(events.NewMessage(pattern=r"\.bombs", outgoing=True))
+async def _(event):
+    if event.fwd_from:
+        return
+       
+ 
+    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await asyncio.sleep(0.5)
+    await event.edit("💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await asyncio.sleep(0.5)
+    await event.edit("▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await asyncio.sleep(0.5)
+    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await asyncio.sleep(0.5)
+    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n")
+    await asyncio.sleep(0.5)
+    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n")
+    await asyncio.sleep(1)
+    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n")
+    await asyncio.sleep(0.5)
+    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n💥💥💥💥 \n")
+    await asyncio.sleep(0.5)
+    await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
+    await asyncio.sleep(0.5)
+    await event.edit("`RIP 😵😵😵...`")
+    await asyncio.sleep(2)
+    
+
+
 @borg.on(admin_cmd(pattern=f"fuck", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
-    animation_interval = 0.1
-
+    animation_interval = 0.2
     animation_ttl = range(0, 101)
-
     input_str = event.pattern_match.group(1)
-
     if input_str == "fuck":
-
         await event.edit(input_str)
-
         animation_chars = [
 
             "👉       ✊️",
@@ -48,71 +71,52 @@ async def _(event):
         ]
 
         for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 4])
 
 
 
-@borg.on(admin_cmd(pattern=f"sex", allow_sudo=True))
+@borg.on(admin_cmd(pattern="love"))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
-    animation_interval = 0.2
-
+    animation_interval = 0.5
     animation_ttl = range(0, 101)
-
     input_str = event.pattern_match.group(1)
-
-    if input_str == "sex":
-
+    if input_str == "love":
         await event.edit(input_str)
-
         animation_chars = [
 
-            "🤵       👰",
+            "L_",
 
-            "🤵     👰",
+            "LO_",
 
-            "🤵  👰",
-
-            "🤵👼👰"
+            "LOV_",
+            
+            "LOVE_",
+            
+            "LOVE❤",
+            
 
         ]
 
         for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
-            await event.edit(animation_chars[i % 4])
+            await event.edit(animation_chars[i % 10])
 
 
 
 @borg.on(admin_cmd(pattern=f"kiss", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.2
-
     animation_ttl = range(0, 101)
-
     input_str = event.pattern_match.group(1)
-
     if input_str == "kiss":
-
         await event.edit(input_str)
-
         animation_chars = [
 
             "🤵       👰",
@@ -126,32 +130,21 @@ async def _(event):
         ]
 
         for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 4])
 
 
 
 @borg.on(admin_cmd(pattern="pornhub"))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.5
-
     animation_ttl = range(0, 101)
-
     input_str = event.pattern_match.group(1)
-
     if input_str == "pornhub":
-
         await event.edit(input_str)
-
         animation_chars = [
 
             "P_",
@@ -173,74 +166,49 @@ async def _(event):
         ]
 
         for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 10])
 
 
 
-@borg.on(admin_cmd(pattern="love"))
+@borg.on(admin_cmd(pattern=f"sex", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
-    animation_interval = 0.5
-
+    animation_interval = 0.2
     animation_ttl = range(0, 101)
-
     input_str = event.pattern_match.group(1)
-
-    if input_str == "love":
-
+    if input_str == "sex":
         await event.edit(input_str)
-
         animation_chars = [
 
-            "L_",
+            "🤵       👰",
 
-            "LO_",
+            "🤵     👰",
 
-            "LOV_",
-            
-            "LOVE_",
-            
-            "LOVE❤",
-            
+            "🤵  👰",
+
+            "🤵👼👰"
 
         ]
 
         for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
-            await event.edit(animation_chars[i % 10])
+            await event.edit(animation_chars[i % 4])
 
 
 
 @borg.on(admin_cmd(pattern="sexy"))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.5
-
     animation_ttl = range(0, 101)
-
     input_str = event.pattern_match.group(1)
-
     if input_str == "sexy":
-
         await event.edit(input_str)
-
         animation_chars = [
 
             "S_",
@@ -258,7 +226,6 @@ async def _(event):
         ]
 
         for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 10])
+
