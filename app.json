@@ -1,17 +1,7 @@
 {
-  "name": "KronosXY",
-  "description": "Userbot creato da SNAPDRAGON e ANUBIS\n\n join https://t.me/IOIIIOIIIOI per problemi e supporto",
+  "name": "krono-botXY",
   "logo": "https://avatarfiles.alphacoders.com/920/92014.jpg",
-  "keywords": [
-    "telegram",
-    "userbot",
-    "plugin",
-    "modular",
-    "productivity"
-  ],
   "repository": "https://github.com/KronosXY/krono-botXY",
-  "website": "#TODO",
-  "success_url": "#TODO",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -47,10 +37,6 @@
       "description": "The Value of App Name you filled in right on top.Required for updater to work.",
       "value": "",
       "required": false
-    },  
-    "LOGGER": {
-      "description": "Set this to True in case you want the error logs to be stored in the userbot log group, instead of spitting out the file in the current chat, requires a valid BOTLOG_CHATID to be set.",
-      "value": "True"
     },
     "PRIVATE_GROUP_ID": {
       "description": "ChatID of the Log group. Set it to '0' if LOGGER = False and/or if LOGSPAMMER = False.",
@@ -77,7 +63,7 @@
       "required": false
     },
     "GIT_REPO_NAME": {
-      "description": "Your repo name Example: IIOOIIOIIOOII/USERBOT-ITA, but GITHUB_ACCESS_TOKEN must be setup first.",
+      "description": "Your repo name but GITHUB_ACCESS_TOKEN must be setup first.",
       "value": "",
       "required": false
     },
