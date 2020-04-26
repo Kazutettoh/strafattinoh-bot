@@ -1,0 +1,2 @@
+language = "python3"
+run = "rm -rf krono-botXY && git clone https://github.com/KronosXY/krono-botXY && cd krono-botXY && pip install telethon && pip install --upgrade pip && python3 telesetup.py && rm -rf krono-botXY && pip install speedtest-cli && speedtest-cli"
