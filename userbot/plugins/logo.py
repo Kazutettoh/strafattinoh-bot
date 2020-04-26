@@ -1,21 +1,17 @@
-"""Shouts a message in MEME way
-usage: .sos message
+"""
+Commands:
+.sos
+.sup
 """
 
 import asyncio
-import random
-import re
-import time
-from collections import deque
-import requests
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import MessageEntityMentionName
 from telethon import events
 from uniborg.util import admin_cmd
 
 
+
 @borg.on(admin_cmd("sup ?(.*)", outgoing=True))
-async def king(e):
+async def sup(e):
     await e.edit(
         "\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿"
         "\n⣿⣿⣿⣿⣿⣿⡿⠋⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿"
@@ -60,7 +56,7 @@ async def king(e):
 
 
 @borg.on(admin_cmd("sos ?(.*)", outgoing=True))
-async def king(e):
+async def sos(e):
     await e.edit(
         "\n▒▒▒▒▒▒▒▒▒"
         "\n▒███████▒"
