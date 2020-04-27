@@ -99,7 +99,7 @@ async def dyno_usage(dyno):
     """
         Get your account Dyno Usage
     """
-    await dyno.edit("`Processing...`")
+    await dyno.edit("`Eseguo...`")
     useragent = ('Mozilla/5.0 (Linux; Android 10; SM-G975F) '
                  'AppleWebKit/537.36 (KHTML, like Gecko) '
                  'Chrome/80.0.3987.149 Mobile Safari/537.36'
@@ -141,20 +141,20 @@ async def dyno_usage(dyno):
 
     await asyncio.sleep(1.5)
 
-    return await dyno.edit("**Dyno Usage**:\n\n"
-                           f" -> `Dyno usage for`  **{Var.HEROKU_APP_NAME}**:\n"
+    return await dyno.edit("**Dyno Usato**:\n\n"
+                           f" -> `Dyno usato per`  **{Var.HEROKU_APP_NAME}**:\n"
                            f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
                            f"**|**  [`{AppPercentage}`**%**]"
                            "\n\n"
-                           " -> `Dyno hours quota remaining this month`:\n"
+                           " -> `Dyno h rimasta questo mese`:\n"
                            f"     •  `{hours}`**h**  `{minutes}`**m**  "
                            f"**|**  [`{percentage}`**%**]"
                            )
 
 
-@command(pattern="^.info heroku")
+@command(pattern="^.heroku info")
 async def info(event):
-    await borg.send_message(event.chat_id, "**Info for Module to Manage Heroku:**\n\n`.usage`\nUsage:__Check your heroku dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the bot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the bot will restarted**")
+    await borg.send_message(event.chat_id, "**Info Modulo Heroku:**\n\n`.usage`\nUso:__Mostra le ore del dyno heroku.__\n\n`.set var <NEW VAR> <VALUE>`\nUso: __Aggiunge una Var o l'aggiorna__\n**!!! WARNING !!! Dopo averla impostata il bot si riavvia.**\n\n`.get var o .get var <VAR>`\nUso: __Modifica le Var esistenti,da usare in privato!__\n**Ciò mostra informazioni private, siate cauti...**\n\n`.del var <VAR>`\nUso: __Elimina Var esistente__\n**!!! WARNING !!! Dopo averla impostata il bot si riavvia**")
     await event.delete()
 
 
