@@ -18,12 +18,13 @@ import logging
 
 from collections import deque
 from telethon import events
+from telethon.errors.rpcerrorlist import MessageIdInvalidError
 from userbot.utils import admin_cmd
 from uniborg.util import admin_cmd
 
 
 
-@borg.on(admin_cmd("dump ?(.*)"))
+@borg.on(admin_cmd(pattern="dump ?(.*)"))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)
@@ -43,7 +44,7 @@ async def _(message):
             await asyncio.sleep(0.3)
             try:
                 await message.edit(something_else)
-            except errors.MessageIdInvalidError:
+            except MessageIdInvalidError:
                 return
 
 
