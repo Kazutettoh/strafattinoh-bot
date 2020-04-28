@@ -2,13 +2,11 @@
 
 ***
 
-## INSTALLAZIONE
+## ¯\_(ツ)_/¯ INSTALLAZIONE ¯\_(ツ)_/¯
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-***
-
-## Var Obbligatorie
+### Var Obbligatorie
 
 - Solo queste due variabili sono obbligatorie:
   - `APP_ID`: Valore da ottenere da <https://my.telegram.org>
