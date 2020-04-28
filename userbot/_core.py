@@ -28,7 +28,7 @@ async def install(event):
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await event.edit("Plugin Caricato`{}`".format(os.path.basename(downloaded_file_name)))
+                await event.edit("Plugin Caricato `{}`".format(os.path.basename(downloaded_file_name)))
             else:
                 os.remove(downloaded_file_name)
                 await event.edit("Errore! Plugin installato/pre-installato.")
@@ -81,6 +81,6 @@ async def load(event):
         except:
             pass
         load_module(shortname)
-        await event.edit(f"Eseguito loaded {shortname}")
+        await event.edit(f"Caricato {shortname}")
     except Exception as e:
-        await event.edit(f"Could not load {shortname} because of the following error.\n{str(e)}")
+        await event.edit(f"Impossibile caricare {shortname} causa error.\n{str(e)}")
