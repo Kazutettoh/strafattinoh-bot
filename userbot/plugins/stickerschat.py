@@ -6,7 +6,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from uniborg.util import admin_cmd
 from userbot import CMD_HELP, ALIVE_NAME
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else str(ALIVE_MSG)
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
 
 @borg.on(admin_cmd(pattern="ext2 ?(.*)"))
