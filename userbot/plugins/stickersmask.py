@@ -45,11 +45,11 @@ async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit(f"`{DEFAULTUSER}: `**Rispondi a photo/Sticker**")
+       await event.edit(f"`{DEFAULTUSER}: `**Rispondi a foto/sticker**")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
-       await event.edit(f"`{DEFAULTUSER}: `**Rispondi a sticker/photo**")
+       await event.edit(f"`{DEFAULTUSER}: `**Rispondi a foto/sticker**")
        return
     chat = "@hazmat_suit_bot"
     sender = reply_message.sender
