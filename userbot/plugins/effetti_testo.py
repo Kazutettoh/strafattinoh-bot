@@ -22,8 +22,9 @@ from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
-from userbot import CMD_HELP
+from userbot import CMD_HELP, ALIVE_NAME
 from userbot.utils import register, admin_cmd
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
 
 PRINTABLE_ASCII = range(0x21, 0x7f)
@@ -61,7 +62,7 @@ async def spongemocktext(mock):
         elif textx:
             message = textx.text
         else:
-            await mock.edit("`gIvE sOMEtHInG tO MoCk!`")
+            await mock.edit(f"`{DEFAULTUSER}:`**Inserisci il testo!**")
             return
 
         for charac in message:
@@ -109,7 +110,7 @@ async def stretch(stret):
         elif textx:
             message = textx.text
         else:
-            await stret.edit("`GiiiiiiiB sooooooomeeeeeee teeeeeeext!`")
+            await stret.edit(f"`{DEFAULTUSER}:`**Inserisci il testo!**")
             return
 
         count = random.randint(3, 10)
@@ -133,7 +134,7 @@ async def typewriter(typew):
         elif textx:
             message = textx.text
         else:
-            await typew.edit("`Give a text to type!`")
+            await typew.edit(f"`{DEFAULTUSER}:`**Inserisci il testo!**")
             return
         sleep_time = 0.03
         typing_symbol = "|"
@@ -162,7 +163,7 @@ async def vapor(vpr):
         elif textx:
             message = textx.text
         else:
-            await vpr.edit("`Ｇｉｖｅ ｓｏｍｅ ｔｅｘｔ ｆｏｒ ｖａｐｏｒ！`")
+            await vpr.edit(f"`{DEFAULTUSER}:`**Inserisci il testo!**")
             return
 
         for charac in message:
@@ -189,9 +190,7 @@ async def zal(zgfy):
         elif textx:
             message = textx.text
         else:
-            await zgfy.edit(
-                "`gͫ ̆ i̛ ̺ v͇̆ ȅͅ   a̢ͦ   s̴̪ c̸̢ ä̸ rͩͣ y͖͞   t̨͚ é̠ x̢͖  t͔͛`"
-            )
+            await zgfy.edit(f"`{DEFAULTUSER}:`**Inserisci il testo!**")
             return
 
         for charac in message:
