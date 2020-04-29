@@ -13,7 +13,7 @@ from userbot import ALIVE_NAME, LESS_SPAMMY
 from userbot.utils import admin_cmd
 
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome selezionato genio**"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**I'M STUPID**"
 PREV_REPLY_MESSAGE = {}
 
 

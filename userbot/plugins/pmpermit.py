@@ -11,7 +11,7 @@ PREV_REPLY_MESSAGE = {}
 CACHE = {}
 
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**Nessun nome**"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**I'M STUPID**"
 USER_BOT_WARN_ZERO = "**Stai spammando troppo sei bloccato dal bot. Io sono impegnato 👎** "
 USER_BOT_NO_WARN = ("[▬▬▬ ✪ SYSTEM SECURITY BOT ✪ ▬▬▬](tg://user?id=1133198248)\n\n"
                     "**Specifica il motivo perchè cerchi **"
