@@ -1,4 +1,4 @@
-"""Make / Download Telegram Sticker Packs without installing Third Party applications
+"""Make / Download Telegram Sticker Packs
 Available Commands:
 .sticker [Optional Emoji]
 .packinfo
@@ -29,7 +29,7 @@ from telethon.tl.types import (
 from userbot.utils import admin_cmd
 from userbot import ALIVE_NAME
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "senza nome"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 FILLED_UP_DADDY = "Invalid pack selected."
 
 @borg.on(admin_cmd(pattern="sticker ?(.*)"))
@@ -37,7 +37,7 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.is_reply:
-        await event.edit("Rispondi ad una foto per creare uno Stickers")
+        await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad un img per creare uno Stickers**")
         return
     reply_message = await event.get_reply_message()
     sticker_emoji = "🔥"
@@ -133,7 +133,7 @@ async def _(event):
                     packname = f"{user.first_name} Pack Vol.{pack}"
                     packshortname = f"Pack._{pack}_di_{userid}"
                     if not await stickerset_exists(bot_conv, packshortname):
-                        await event.edit("**Pack No. **" + str(prevv) + "** full! Creato a new Pack, Vol. **" + str(pack))
+                        await event.edit("**Pack No. **" + str(prevv) + "** Pieno! Creato New Pack, Vol. **" + str(pack))
                         if is_a_s:
                             response = await silently_send_message(bot_conv, "/newanimated")
                         else:
@@ -192,8 +192,8 @@ async def _(event):
                 await silently_send_message(bot_conv, "/done")
 
 
-    await event.edit(f"**Fatto!** `Sticker rubato ;D, ora si trova ` [qui](t.me/addstickers/{packshortname}), pack{pack}"
-                     f" `di` {DEFAULTUSER}\n**ᕦ(ò_óˇ)ᕤ**")
+    await event.edit(f"**¯\_(ツ)_/¯** `Sticker rubato, ora si trova ` [qui](t.me/addstickers/{packshortname}), pack{pack}"
+                     f" `di` {DEFAULTUSER}\n ")
 
 
 @borg.on(admin_cmd(pattern="packinfo"))
@@ -201,11 +201,11 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.is_reply:
-        await event.edit("Rispondi a uno sticker o img per info.")
+        await event.edit(f"`{DEFAULTUSER}:`**Rispondi a uno sticker per info.**")
         return
     rep_msg = await event.get_reply_message() 
     if not rep_msg.document:
-        await event.edit("Rispondi a uno sticker o img per info.")
+        await event.edit(f"`{DEFAULTUSER}:`**Rispondi a uno sticker per info.**")
         return
     stickerset_attr_s = rep_msg.document.attributes
     stickerset_attr = find_instance(stickerset_attr_s, DocumentAttributeSticker)
@@ -229,7 +229,7 @@ async def _(event):
                      f"**Official:** `{get_stickerset.set.official}`\n"
                      f"**Archived:** `{get_stickerset.set.archived}`\n"
                      f"**Stickers In Pack:** `{len(get_stickerset.packs)}`\n"
-                     f"**Emojis In Pack:** {' '.join(pack_emojis)}")
+                     f"**Emojis Pack:** {' '.join(pack_emojis)}")
 
 
 @borg.on(admin_cmd(pattern="getsticker ?(.*)"))
@@ -288,7 +288,7 @@ async def _(event):
                 pass
             if not pending_tasks:
                 break
-        await event.edit("Downloading to my local completed")
+        await event.edit("Download locale completo")
         # https://gist.github.com/udf/e4e3dbb2e831c8b580d8fddd312714f7
         directory_name = Config.TMP_DOWNLOAD_DIRECTORY + sticker_set.set.short_name
         zipf = zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED)
@@ -312,7 +312,7 @@ async def _(event):
         await asyncio.sleep(3)
         await event.delete()
     else:
-        await event.edit("TODO: Not Implemented")
+        await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad uno sticker per scaricare il pack")
 
 
 # Helpers
