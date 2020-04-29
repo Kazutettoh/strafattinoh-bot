@@ -17,18 +17,18 @@ async def _(event):
    if event.fwd_from:
       return 
    if not event.reply_to_msg_id:
-      await event.edit(f"`{DEFAULTUSER}: `**Rispondi ad un user.**")
+      await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad un user.**")
       return
    reply_message = await event.get_reply_message() 
    if not reply_message.text:
-      await event.edit(f"`{DEFAULTUSER}: `**Rispondi ad un user.**")
+      await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad un user.**")
       return
    chat = "@SangMataInfo_bot"
    sender = reply_message.sender
    if reply_message.sender.bot:
-      await event.edit(f"`{DEFAULTUSER}: `**Rispondi a un user, no al bot.**")
+      await event.edit(f"`{DEFAULTUSER}:`**Rispondi a un user, no al bot.**")
       return
-   await event.edit(f"`{DEFAULTUSER}: `**Ricerca Storico...**")
+   await event.edit(f"`{DEFAULTUSER}:`**Ricerca Storico...**")
    async with borg.conversation(chat) as conv:
          try:     
             response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
@@ -38,7 +38,7 @@ async def _(event):
             await event.reply("```Please sblocca @Sangmatainfo_bot ```")
             return
          if response.text.startswith("Forward"):
-            await event.edit(f"`{DEFAULTUSER}: `**privacy error**")
+            await event.edit(f"`{DEFAULTUSER}:`**privacy error**")
          else: 
             await event.edit(f"{response.message.message}")
 
@@ -49,18 +49,18 @@ async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit(f"`{DEFAULTUSER}: `**Rispondi ad un user.**")
+       await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad un user.**")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.text:
-       await event.edit(f"`{DEFAULTUSER}: `**Rispondi ad un user.**")
+       await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad un user.**")
        return
     chat = "@getidsbot"
     sender = reply_message.sender
     if reply_message.sender.bot:
-       await event.edit(f"`{DEFAULTUSER}: `**Rispondi a un user, no al bot.**")
+       await event.edit(f"`{DEFAULTUSER}:`**Rispondi a un user, no al bot.**")
        return
-    await event.edit(f"`{DEFAULTUSER}: `**Ricerca Info...**")
+    await event.edit(f"`{DEFAULTUSER}:`**Ricerca Info...**")
     async with borg.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=186675376))
@@ -70,6 +70,6 @@ async def _(event):
               await event.reply("```Please sblocca @getidsbot ```")
               return
           if response.text.startswith("Forward"):
-             await event.edit(f"`{DEFAULTUSER}: `**privacy error**")
+             await event.edit(f"`{DEFAULTUSER}:`**privacy error**")
           else: 
              await event.edit(f"{response.message.message}")

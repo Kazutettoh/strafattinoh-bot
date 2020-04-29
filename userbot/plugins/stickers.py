@@ -312,7 +312,7 @@ async def _(event):
         await asyncio.sleep(3)
         await event.delete()
     else:
-        await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad uno sticker per scaricare il pack")
+        await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad uno sticker per scaricare il pack**")
 
 
 # Helpers
