@@ -1,7 +1,4 @@
 """Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
-base by: @r4v4n4
-created by: @A_Dark_Princ3
-if you change these, you gay.
 """
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -30,7 +27,9 @@ InputStickerSetID,
 InputStickerSetShortName,
 MessageMediaPhoto
 )
+from userbot import CMD_HELP, ALIVE_NAME
 
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
@@ -40,21 +39,21 @@ async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit("`Syntax: reply to an image with .mms` 'text on top' ; 'text on bottom' ")
+       await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad un img/sticker/gif `.mms` e il testo, `.mms` testo ; e testo per metterlo pure sotto**")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
-       await event.edit("```reply to a image/sticker/gif```")
+       await event.edit(f"`{DEFAULTUSER}:`**Rispondi ad un img/sticker/gif**")
        return
     chat = "@MemeAutobot"
     sender = reply_message.sender
     file_ext_ns_ion = "@memetime.png"
     uploaded_gif = None
     if reply_message.sender.bot:
-       await event.edit("```Reply to actual users message.```")
+       await event.edit(f"`{DEFAULTUSER}:`**Rispondi a un user, no al bot.**")
        return
     else:
-       await event.edit("```Transfiguration Time! Mwahaha memifying this image! (」ﾟﾛﾟ)｣ ```")
+       await event.edit(f"`{DEFAULTUSER}:`**Eheheh inizio la modifica dell'img**")
     file = await borg.download_file(reply_message.media)
     
     async with borg.conversation("@MemeAutobot") as bot_conv:
@@ -66,12 +65,12 @@ async def _(event):
             await borg.send_file(chat, reply_message.media)
             response = await bot_conv.get_response()
           except YouBlockedUserError: 
-              await event.reply("```Please unblock @MemeAutobot and try again```")
+              await event.reply("```Please sblocca @MemeAutobot ```")
               return
           if response.text.startswith("Forward"):
-              await event.edit("```can you kindly disable your forward privacy settings for good nibba?```")
+              await event.edit(f"`{DEFAULTUSER}:`**privacy error**")
           if "Okay..." in response.text:
-            await event.edit("```🤨 NANI?! This is not an image! This will take sum tym to convert to image owo 🧐```")
+            await event.edit(f"`{DEFAULTUSER}:`**Eheheh inizio la modifica dell'img**")
             thumb = None
             if os.path.exists(thumb_image_path):
                 thumb = thumb_image_path
@@ -112,15 +111,14 @@ async def _(event):
                 event.chat_id,
                 requires_file_name,
                 supports_streaming=False,
-                caption="Userbot: Powered by @x-tra-telegram",
-                # Courtesy: @A_Dark_Princ3
-            )
+                caption="Userbot",
+                )
             await event.delete()
-            sax = await borg.send_message(event.chat_id, "`☠️☠️10 Points to Griffindor!🔥🔥`")
+            sax = await borg.send_message(event.chat_id, "`☠️☠️10 Punti a Griffindor!🔥🔥`")
             await asyncio.sleep(4)
             sax.delete()
           elif not is_message_image(reply_message):
-            await event.edit("Invalid message type. Plz choose right message type u NIBBA.")
+            await event.edit("Invalid message type. Plz choose right message type.")
             return
           else: 
                await borg.send_file(event.chat_id, response.media)
