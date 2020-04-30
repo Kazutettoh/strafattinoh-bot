@@ -1,4 +1,4 @@
-"""Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
+"""Reply to a image/sticker .mmf` 'text on top' ; 'text on bottom
 """
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -70,7 +70,7 @@ async def _(event):
           if response.text.startswith("Forward"):
               await event.edit(f"`{DEFAULTUSER}:`**privacy error**")
           if "Okay..." in response.text:
-            await event.edit(f"**Eheheh inizio la modifica dell'img**")
+            await event.edit("**Eheheh inizio la modifica dell'img**")
             thumb = None
             if os.path.exists(thumb_image_path):
                 thumb = thumb_image_path
@@ -138,4 +138,3 @@ async def silently_send_message(conv, text):
     response = await conv.get_response()
     await conv.mark_read(message=response)
     return response
-    
