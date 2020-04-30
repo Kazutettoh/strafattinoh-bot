@@ -70,7 +70,7 @@ async def _(event):
           if response.text.startswith("Forward"):
               await event.edit(f"`{DEFAULTUSER}:`**privacy error**")
           if "Okay..." in response.text:
-            await event.edit(f"`{DEFAULTUSER}:`**Eheheh inizio la modifica dell'img**")
+            await event.edit(f"**Eheheh inizio la modifica dell'img**")
             thumb = None
             if os.path.exists(thumb_image_path):
                 thumb = thumb_image_path
