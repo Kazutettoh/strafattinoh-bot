@@ -11,16 +11,14 @@ Commands:
 """
 
 
-
 import asyncio
 
 from telethon import events
 
 from platform import uname
 
-from userbot import CMD_HELP
+from userbot import CMD_HELP, ALIVE_NAME
 from userbot.utils import admin_cmd
-from userbot import ALIVE_NAME
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
@@ -56,7 +54,6 @@ async def _(event):
             await event.edit(animation_chars[i % 11])
 
 
-
 @borg.on(admin_cmd(pattern=f"avast1", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 async def _(event):
@@ -87,7 +84,6 @@ async def _(event):
             await event.edit(animation_chars[i % 11])
 
 
-
 @borg.on(admin_cmd(pattern=f"call", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 async def _(event):
@@ -103,19 +99,19 @@ async def _(event):
             "`Chiamata alla sede di Telegram...`",
             "`Chiamata Connessa`",
             "`Telegram: Salve, risponde la sede di Telegram. Chi è lei?`",
-            "`Io: Salve sono` @IOIIIOIIIOI ,`Devo parlare con il mio socio ,Pavel Durov`",
+            f"{DEFAULTUSER}:`Salve sono`{DEFAULTUSER} ,`Devo parlare con il mio socio ,Pavel Durov`",
             "`User Autorizzato.`",
             "`Chiamata a Pavel Durov` `+6969696969`",
             "`Chiamata Connessa`",  
-            "`Io: Banna questo account da Telegram`",
+            f"{DEFAULTUSER}:`Banna questo account da Telegram`",
             "`Pavel: Posso sapere chi sei?`",
-            "`Io: Yo bro, sono` @IOIIIOIIIOI ",
+            f"{DEFAULTUSER}:`Yo bro, sono`{DEFAULTUSER} ",
             "`Pavel: OMG!!! Ma è da tanto che non ci vediamo, bro...\nMi assicurerò io che l'account venga bloccato entro 24 ore.`",
-            "`Io: Grazie, a dopo bro.`",
+            f"{DEFAULTUSER}:`Grazie, a dopo bro.`",
             "`Pavel: Ma va bro, telegram è nostro. Chiamami quando sei libero`",
-            "`Io: C'è qualche problema bro?🤔`",
+            f"{DEFAULTUSER}:`C'è qualche problema bro?🤔`",
             "`Pavel: Sì bro, c'è un bug in telegram v8.6.9.\nNon sono in grado di risolverlo. Mi, aiuti a correggere il bug?`",
-            "`Io: Inviami tutto sul mio Telegram, risolverò il bug.`",
+            f"{DEFAULTUSER}:`Inviami tutto in chat, risolverò il bug.`",
             "`Pavel: Grazie bro \nCi sentiamo :)`",
             "`Chiamata Disconnessa.`"
         ]
@@ -123,7 +119,6 @@ async def _(event):
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 18])
-
 
 
 @borg.on(admin_cmd(pattern=f"hack", allow_sudo=True))
@@ -167,7 +162,6 @@ async def _(event):
             await event.edit(animation_chars[i % 12])
 
 
-
 @borg.on(admin_cmd(pattern=f"linux", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 
@@ -207,7 +201,6 @@ async def _(event):
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 11])
-
 
 
 @borg.on(admin_cmd(pattern=f"macos", allow_sudo=True))
@@ -251,7 +244,6 @@ async def _(event):
             await event.edit(animation_chars[i % 11])
 
 
-
 @borg.on(admin_cmd(pattern=f"stock", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 
@@ -293,7 +285,6 @@ async def _(event):
             await event.edit(animation_chars[i % 11])
 
 
-
 @borg.on(admin_cmd(pattern=f"windows", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 
@@ -333,5 +324,3 @@ async def _(event):
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 11])
-
-
