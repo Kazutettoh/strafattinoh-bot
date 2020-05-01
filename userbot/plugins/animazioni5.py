@@ -31,7 +31,6 @@ async def _(event):
 		    deq.rotate(1)
 
 
-
 @register(outgoing=True, pattern="^.moon$")
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -51,7 +50,6 @@ async def test(event):
     await event.edit("🌕🌕🌕🌕🌕🌕🌕🌕\n🌕🌕🌖🌔🌖🌔🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌖🌓🌗🌔🌕🌕\n🌕🌕🌗🌑🌑🌓🌕🌕\n🌕🌕🌗👀🌑🌓🌕🌕\n🌕🌕🌘👄🌑🌓🌕🌕\n🌕🌕🌗🌑🌑🌒🌕🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌕🌘🌑🌑🌑🌑🌒🌕\n🌖🌑🌑🌑🌑🌑🌑🌔\n🌕🤜🏻🌑🌑🌑🌑🤛🏻🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌘🌑🌑🌑🌑🌑🌑🌒\n🌕🌕🌕🌕🌕🌕🌕🌕")
 
 
-
 @borg.on(admin_cmd(pattern=f"smoon", outgoing=True))
 
 async def _(event):
@@ -68,9 +66,9 @@ async def _(event):
 
     #if input_str == "smoon":
 
-        await event.edit("smoon")
+    await event.edit("smoon")
 
-        animation_chars = [
+    animation_chars = [
 
             "🌗🌗🌗🌗🌗\n🌓🌓🌓🌓🌓\n🌗🌗🌗🌗🌗\n🌓🌓🌓🌓🌓\n🌗🌗🌗🌗🌗",
             "🌘🌘🌘🌘🌘\n🌔🌔🌔🌔🌔\n🌘🌘🌘🌘🌘\n🌔🌔🌔🌔🌔\n🌘🌘🌘🌘🌘",    
@@ -82,12 +80,11 @@ async def _(event):
             "🌖🌖🌖🌖🌖\n🌒🌒🌒🌒🌒\n🌖🌖🌖🌖🌖\n🌒🌒🌒🌒🌒\n🌖🌖🌖🌖🌖"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
 
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 8])
-
 
 
 @borg.on(admin_cmd(pattern=f"tmoon", outgoing=True))
@@ -106,9 +103,9 @@ async def _(event):
 
     #if input_str == "tmoon":
 
-        await event.edit("tmoon")
+    await event.edit("tmoon")
 
-        animation_chars = [
+    animation_chars = [
 
             "🌗",
             "🌘",    
@@ -144,7 +141,7 @@ async def _(event):
             "🌖"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
 
             await asyncio.sleep(animation_interval)
 
