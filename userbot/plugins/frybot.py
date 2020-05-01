@@ -57,10 +57,10 @@ async def _(event):
        await event.edit(f"`{DEFAULTUSER}:`**Rispondi a un user, no al bot.**")
        return
     await event.edit(f"`{DEFAULTUSER}:`**Creo img/sticker...**")
-    async with event.client.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=432858024))
-              await event.client.forward_messages(chat, reply_message)
+              await bot.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("```Please sblocca @image_deepfrybot ```")
@@ -68,5 +68,4 @@ async def _(event):
           if response.text.startswith("Forward"):
              await event.edit(f"`{DEFAULTUSER}:`**privacy error**")
           else: 
-             await event.delete()
-             await event.send_file(event.chat_id, response.message.media)
+                await bot.send_file(event.chat_id, response.message.media)
