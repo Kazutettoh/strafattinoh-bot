@@ -2,7 +2,40 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from userbot.utils import admin_cmd
+import datetime
+import asyncio
+from telethon import events
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.functions.account import UpdateNotifySettingsRequest
+from userbot.events import register
+from userbot import bot, CMD_HELP
+
+from userbot import bot, CMD_HELP
+import io
+import math
+import urllib.request
+from os import remove
+from userbot.events import register
+import io
+import os
+import random
+import textwrap
+from PIL import Image, ImageDraw, ImageFont
+from telethon.tl.types import InputMessagesFilterDocument
+
+from PIL import Image
+import random
+from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto
+from userbot import bot, CMD_HELP
+import io
+import os
+import random
+import textwrap
+from PIL import Image, ImageDraw, ImageFont
+from telethon.tl.types import InputMessagesFilterDocument
+from telethon.tl.functions.messages import GetStickerSetRequest
+from telethon.tl.types import InputStickerSetID
+from telethon.tl.types import DocumentAttributeSticker
 from userbot import CMD_HELP, ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
