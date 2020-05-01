@@ -5,8 +5,9 @@ Commands:
 .lmoon
 .smoon
 .tmoon
+.ok
+.wtf
 """
-
 
 import asyncio
 
@@ -51,23 +52,14 @@ async def test(event):
 
 
 @borg.on(admin_cmd(pattern=f"smoon", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.1
-
     animation_ttl = range(0, 101)
-
     #input_str = event.pattern_match.group(1)
-
     #if input_str == "smoon":
-
     await event.edit("smoon")
-
     animation_chars = [
 
             "🌗🌗🌗🌗🌗\n🌓🌓🌓🌓🌓\n🌗🌗🌗🌗🌗\n🌓🌓🌓🌓🌓\n🌗🌗🌗🌗🌗",
@@ -81,30 +73,19 @@ async def _(event):
         ]
 
     for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 8])
 
 
 @borg.on(admin_cmd(pattern=f"tmoon", outgoing=True))
-
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.1
-
     animation_ttl = range(0, 117)
-
     #input_str = event.pattern_match.group(1)
-
     #if input_str == "tmoon":
-
     await event.edit("tmoon")
-
     animation_chars = [
 
             "🌗",
@@ -142,7 +123,61 @@ async def _(event):
         ]
 
     for i in animation_ttl:
-
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 117])
+
+
+@borg.on(admin_cmd(pattern=f"ok", outgoing=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    animation_interval = 0.0001
+    animation_ttl = range(0, 90)
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "ok":
+    await event.edit("ok")
+    animation_chars = [
+            "F",
+            "U",
+            "C",
+            "K",
+            "Y",
+            "O",
+            "U",
+            "F",
+            "C",
+            "FK",
+            "CU",
+            "FUCK",
+            "UCK",
+            "C",
+            "K",
+            "U",
+            "F",
+            "OK CHAMP 😇"
+        ]
+
+    for i in animation_ttl:        	
+            await asyncio.sleep(animation_interval)
+            await event.edit(animation_chars[i % 18])
+
+
+@borg.on(admin_cmd(pattern=f"wtf", outgoing=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    animation_interval = 0.3
+    animation_ttl = range(0, 5)
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "wtf":
+    await event.edit("wtf")
+    animation_chars = [
+            "What",
+            "What The",
+            "What The F",
+            "[What The F bro](https://telegra.ph//file/f3b760e4a99340d331f9b.jpg)"
+        ]
+
+    for i in animation_ttl:        	
+            await asyncio.sleep(animation_interval)
+            await event.edit(animation_chars[i % 5 ])
