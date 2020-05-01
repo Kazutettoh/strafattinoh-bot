@@ -40,7 +40,7 @@ from userbot import CMD_HELP, ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
 
-@borg.on(admin_cmd(pattern=("frybot ?(.*)")))
+@register(outgoing=True, pattern="^.frybot(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return 
