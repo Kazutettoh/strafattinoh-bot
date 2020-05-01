@@ -8,7 +8,6 @@ Commands:
 .sprinkle
 """
 
-
 import asyncio
 import os
 import sys
@@ -33,13 +32,11 @@ async def test(event):
 🌴/                    |                     \🌲""")
 
 
-
 @borg.on(admin_cmd(pattern=r"cheer"))
 async def cheer(event):
     if event.fwd_from:
         return
     await event.edit("💐💐😉😊💐💐\n☕ Cheer Up  🍵\n🍂 ✨ )) ✨  🍂\n🍂┃ (( * ┣┓ 🍂\n🍂┃*💗 ┣┛ 🍂 \n🍂┗━━┛  🍂🎂 For YOU  🍰\n💐💐😌😚💐💐")
-
 
 
 @borg.on(admin_cmd(pattern=r"getwell"))
@@ -49,13 +46,11 @@ async def getwell(event):
     await event.edit("🌹🌹🌹🌹🌹🌹🌹🌹 \n🌹😷😢😓😷😢💨🌹\n🌹💝💉🍵💊💐💝🌹\n🌹 GetBetter Soon! 🌹\n🌹🌹🌹🌹🌹🌹🌹🌹")
 
 
-
 @borg.on(admin_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("🌺✨✨🌺✨🌺🌺🌺\n🌺✨✨🌺✨✨🌺✨\n🌺🌺🌺🌺✨✨🌺✨\n🌺✨✨🌺✨✨🌺✨\n🌺✨✨🌺✨🌺🌺🌺\n☁☁☁☁☁☁☁☁")
-
 
 
 @borg.on(admin_cmd(pattern=r"luck"))
@@ -65,10 +60,8 @@ async def luck(event):
     await event.edit("💚~🍀🍀🍀🍀🍀\n🍀╔╗╔╗╔╗╦╗✨🍀\n🍀║╦║║║║║║👍🍀\n🍀╚╝╚╝╚╝╩╝。 🍀\n🍀・・ⓁⓊⒸⓀ🍀\n🍀🍀🍀 to you💚")
 
 
-
 @borg.on(admin_cmd(pattern=r"sprinkle"))
 async def sprinkle(event):
     if event.fwd_from:
         return
     await event.edit("✨.•*¨*.¸.•*¨*.¸¸.•*¨*• ƸӜƷ\n🌸🌺🌸🌺🌸🌺🌸🌺\n Sprinkled with love❤\n🌷🌻🌷🌻🌷🌻🌷🌻\n ¨*.¸.•*¨*. ¸.•*¨*.¸¸.•*¨`*•.✨\n🌹🍀🌹🍀🌹🍀🌹🍀")
-

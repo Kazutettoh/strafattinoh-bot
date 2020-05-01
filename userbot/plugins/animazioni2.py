@@ -11,7 +11,6 @@ Commands:
 .puta
 """
 
-
 import asyncio
 import random
 import logging
@@ -48,7 +47,6 @@ async def _(message):
                 return
 
 
-
 @borg.on(admin_cmd(pattern="earth"))
 async def _(event):
 	if event.fwd_from:
@@ -60,18 +58,16 @@ async def _(event):
 		deq.rotate(1)
 
 
-
-@borg.on(admin_cmd(pattern="esporta"))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="esporta", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
     animation_ttl = range(0, 17)
-    input_str = event.pattern_match.group(1)
-    if input_str == "esporta":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "esporta":
+    await event.edit("esporta")
+    animation_chars = [
         
             "⬛⬛⬛\n⬛⬛⬛\n⬛⬛⬛",
             "⬛⬛⬛\n⬛🔄⬛\n⬛⬛⬛",
@@ -89,12 +85,11 @@ async def _(event):
             "__Abbandono della chat...! Bye..__",
             "__Abbandono della chat...! Bye..__"
 
- ]
+        ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 17])
-
 
 
 @borg.on(admin_cmd("fail ?(.*)", outgoing=True))
@@ -105,28 +100,25 @@ async def fail(e):
                  "`\n▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ `")    
 
 
-
-@borg.on(admin_cmd(pattern="fottiti"))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="fottiti", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.4
     animation_ttl = range(0, 101)
-    input_str = event.pattern_match.group(1)
-    if input_str == "fottiti":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "fottiti":
+    await event.edit("fottiti")
+    animation_chars = [
 
             "🖕🏻🖕🏻🖕🏼🖕🏼🖕🏽🖕🏽🖕🏾🖕🏾🖕🏿",
 
             "🖕🏼🖕🏼🖕🏽🖕🏽🖕🏾🖕🏾🖕🏿🖕🏿🖕🏿"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 2])
-
 
 
 @borg.on(admin_cmd("lol ?(.*)", outgoing=True))
@@ -137,18 +129,16 @@ async def lol(e):
                  "`\n╱┗━━━┛╰━━━╯┗━━━┛╱ `") 
  
 
-
-@borg.on(admin_cmd(pattern=f"kill", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"kill", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 30
     animation_ttl = range(0, 103)
-    input_str = event.pattern_match.group(1)
-    if input_str == "kill":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "kill":
+    await event.edit("kill")
+    animation_chars = [
 
             "Ｆｉｉｉｉｉｒｅ",
             "(　･ิω･ิ)︻デ═一-->",    
@@ -164,9 +154,9 @@ async def _(event):
             "**тαяgєт кιℓℓαтσ (°̥̥̥̥̥̥̥̥•̀.̫•́°̥̥̥̥̥̥̥)**",
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
+            await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 103])
-
 
 
 @borg.on(admin_cmd("kk ?(.*)", outgoing=True))
@@ -179,24 +169,22 @@ async def kk(e):
                  "\n**┗┛**")
 
 
-
-@borg.on(admin_cmd(pattern="puta"))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="puta", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.8
     animation_ttl = range(0, 16)
-    input_str = event.pattern_match.group(1)
-    if input_str == "puta":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "puta":
+    await event.edit("puta")
+    animation_chars = [
             "Shh",
             "STAI",
             "SEDUTA",
             "PUTA🤫🤫"
         ]
-        for i in animation_ttl:
+
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 4])
-

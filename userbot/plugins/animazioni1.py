@@ -1,3 +1,13 @@
+"""
+Commands:
+.hypno
+.plane
+.pula
+.sega
+.solarsystem
+.sorpresa
+"""
+
 import os
 import sys
 import asyncio
@@ -14,17 +24,16 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
 
 
-@borg.on(admin_cmd(pattern=f"hypno", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"hypno", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.3
     animation_ttl = range(0, 15)
-    input_str = event.pattern_match.group(1)
-    if input_str == "hypno":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "hypno":
+    await event.edit("hypno")
+    animation_chars = [
         
             "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
             "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬛⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
@@ -42,16 +51,14 @@ async def _(event):
             "⬜⬜⬜\n⬜⬛⬜\n⬜⬜⬜",
             "[👉🔴👈])"
 
- ]
+        ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 15])
 
 
-
-@borg.on(admin_cmd(pattern=f"plane", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.plane", outgoing=True))
+@borg.on(admin_cmd(pattern=f"plane", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return                
@@ -73,9 +80,7 @@ async def _(event):
     await event.delete()
 
 
-
 @borg.on(admin_cmd(pattern=r"pula"))
-
 async def _(event):
     if event.fwd_from:
         return
@@ -104,18 +109,16 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-
-@borg.on(admin_cmd(pattern="sega"))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="sega", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.3
     animation_ttl = range(0, 100)
-    input_str = event.pattern_match.group(1)
-    if input_str == "sega":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "sega":
+    await event.edit("sega")
+    animation_chars = [
 
             "8✊️===D",
 
@@ -139,23 +142,21 @@ async def _(event):
 
         ]
 
-        for i in animation_ttl:        
+    for i in animation_ttl:        
             await asyncio.sleep(animation_interval)        
             await event.edit(animation_chars[i % 8])
 
 
-
-@borg.on(admin_cmd(pattern=f"snake", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"snake", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.3
     animation_ttl = range(0, 27)
-    input_str = event.pattern_match.group(1)
-    if input_str == "snake":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "snake":
+    await event.edit("snake")
+    animation_chars = [
 
             "◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️",
             
@@ -212,23 +213,21 @@ async def _(event):
             "◻️◻️◻️◻️◻️\n◻️◼️◻️◼️◻️\n◻️◻️◻️◻️◻️\n◻️◼️◼️◼️◻️\n◻️◻️◻️◻️◻️"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 27])
 
 
-
-@borg.on(admin_cmd(pattern=f"solarsystem", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"solarsystem", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.1
     animation_ttl = range(0, 549755813888)
-    input_str = event.pattern_match.group(1)
-    if input_str == "solarsystem":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "solarsystem":
+    await event.edit("solarsystem")
+    animation_chars = [
             "`◼️◼️◼️◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️🌎◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️◼️◼️◼️`",
             "`◼️◼️◼️◼️◼️\n🌕◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️☀\n◼️◼️◼️◼️◼️`",
             "`◼️🌕◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️☀◼️`",
@@ -349,25 +348,23 @@ async def _(event):
             "`◼️◼️◼️◼️◼️\n☀◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️🌕\n◼️◼️◼️◼️◼️`",
             "`◼️☀◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️🌕◼️`",
             "`◼️◼️◼️☀◼️\n◼️◼️◼️◼️◼️\n◼️◼️🌎◼️◼️\n◼️◼️◼️◼️◼️\n◼️🌕◼️◼️◼️`",
-            ]
+        ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 549755813888])
 
 
-
-@borg.on(admin_cmd(pattern="sorpresa"))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="sorpresa", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.5
     animation_ttl = range(0, 17)
-    input_str = event.pattern_match.group(1)
-    if input_str == "sorpresa":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "sorpresa":
+    await event.edit("sorpresa")
+    animation_chars = [
         
             "⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://wpml.org/wp-content/uploads/2018/12/3033640-FUCKYOU.jpg)⬜",
             "⬛⬜⬜⬜⬜\n👇⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜[🎁](https://wpml.org/wp-content/uploads/2018/12/3033640-FUCKYOU.jpg)⬜",
@@ -387,9 +384,8 @@ async def _(event):
             "⬜⬜\n⬜⬜",
             "[🎁](https://wpml.org/wp-content/uploads/2018/12/3033640-FUCKYOU.jpg)"
 
- ]
+        ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 17])
-

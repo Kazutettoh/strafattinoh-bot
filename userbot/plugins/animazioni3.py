@@ -10,7 +10,6 @@ Commands:
 .windows
 """
 
-
 import asyncio
 
 from telethon import events
@@ -24,17 +23,16 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
 
 
-@borg.on(admin_cmd(pattern=f"avast", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"avast", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.1
     animation_ttl = range(0, 11)
-    input_str = event.pattern_match.group(1)
-    if input_str == "avast":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "avast":
+    await event.edit("avast")
+    animation_chars = [
         
             "`Downloading File..`",
             "`File Downloaded....`",
@@ -49,22 +47,21 @@ async def _(event):
             "`Avast Security Checkup\n\n\nAccount: User Pro\nScadenza: 31/12/2099\n\nRicerca: 01 of 01 Files Scansione...\n\nSTATUS: Nessun Virus Rilevato...`"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"avast1", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"avast1", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 1
     animation_ttl = range(0, 11)
-    input_str = event.pattern_match.group(1)
-    if input_str == "avast1":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "avast1":
+    await event.edit(input_str)
+    animation_chars = [
         
             "`Downloading File..`",
             "`File Downloaded....`",
@@ -79,22 +76,21 @@ async def _(event):
             "`Avast Security Checkup\n\n\nAccount: User Pro\nScadenza: 31/12/2099\n\nRicerca: 01 of 01 Scansione...\n\nSTATUS:⚠️Virus Rilevato⚠️\nINFO: Torzan, Spyware, Adware`"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"call", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"call", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 3
     animation_ttl = range(0, 18)
-    input_str = event.pattern_match.group(1)
-    if input_str == "call":
-        await event.edit(input_str)
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "call":
+    await event.edit("call")
+    animation_chars = [
         
             "`Chiamata alla sede di Telegram...`",
             "`Chiamata Connessa`",
@@ -116,31 +112,21 @@ async def _(event):
             "`Chiamata Disconnessa.`"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 18])
 
 
-@borg.on(admin_cmd(pattern=f"hack", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
-async def _(event):
-   
-    if event.fwd_from:
-       
-        return
-   
-    animation_interval = 2
-   
-    animation_ttl = range(0, 12)
-    
-    input_str = event.pattern_match.group(1)
-   
-    if input_str == "hack":
-       
-        await event.edit(input_str)
-       
-        animation_chars = [
+@borg.on(admin_cmd(pattern=f"hack", outgoing=True))
+async def _(event):   
+    if event.fwd_from:       
+        return   
+    animation_interval = 2   
+    animation_ttl = range(0, 12)    
+    #input_str = event.pattern_match.group(1)   
+    #if input_str == "hack":       
+    await event.edit("hack")       
+    animation_chars = [
         
             "**Connessione a Telegram Data Center**",
             f"Target Selected By Hacker: {DEFAULTUSER}",
@@ -155,33 +141,21 @@ async def _(event):
             f"`Account Hackerato...\n\nPaga 699€ a` {DEFAULTUSER} o @IOOIIOIIOOI .`Per Rimuovere questo VIRUS`\n\n\n  TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing (setup.py): finished with status 'done'\nCreated wheel for telegram: filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory: /app/.cache/pip/wheels/a2/9f/b5/650dd4d533f0a17ca30cc11120b176643d27e0e1f5c9876b5b\n\n **Successfully Hacked Telegram Server Database**\n\n\n🔹**Output:** Successful"
         ]
 
-        for i in animation_ttl:
-          
-            await asyncio.sleep(animation_interval)
-           
+    for i in animation_ttl:          
+            await asyncio.sleep(animation_interval)           
             await event.edit(animation_chars[i % 12])
 
 
-@borg.on(admin_cmd(pattern=f"linux", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
+@borg.on(admin_cmd(pattern=f"linux", outgoing=True))
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.5
-
     animation_ttl = range(0, 11)
-
-    input_str = event.pattern_match.group(1)
-
-    if input_str == "linux":
-
-        await event.edit(input_str)
-
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "linux":
+    await event.edit("linux")
+    animation_chars = [
         
             "`Connessione a Linux...`",
             "`Inizializza Linux Login.`",
@@ -196,33 +170,21 @@ async def _(event):
             "`Welcome...\n\nStock OS: Symbian OS\nCurrent OS: Linux`\n\n**My PC Specs:**\n\n **CPU:** __2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)__\n\n**Graphics:** __Nvidia GeForce GTX 1080 OC (8GB GDDR5X)__\n\n**RAM:** __32GB DDR4 (2,666MHz)__\n\n**Screen:** __17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync__\n\n**Storage:** __512GB PCIe SSD, 1TB HDD (7,200 rpm)__\n\n**Ports:** __2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity:** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera:** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size:** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__"
         ]
 
-        for i in animation_ttl:
-
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"macos", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
+@borg.on(admin_cmd(pattern=f"macos", outgoing=True))
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.5
-
     animation_ttl = range(0, 11)
-
-    input_str = event.pattern_match.group(1)
-
-    if input_str == "macos":
-
-        await event.edit(input_str)
-
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "macos":
+    await event.edit("macos")
+    animation_chars = [
         
             "`Connessione a Hackintosh...`",
             "`Inizializza Hackintosh Login.`",
@@ -237,33 +199,21 @@ async def _(event):
             "`Welcome...\n\nStock OS: Symbian OS\nCurrent OS: Hackintosh`\n\n**My PC Specs:**\n\n **CPU:** __2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)__\n\n**Graphics:** __Nvidia GeForce GTX 1080 OC (8GB GDDR5X)__\n\n**RAM:** __32GB DDR4 (2,666MHz)__\n\n**Screen:** __17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync__\n\n**Storage:** __512GB PCIe SSD, 1TB HDD (7,200 rpm)__\n\n**Ports:** __2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity:** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera:** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size:** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__"
         ]
 
-        for i in animation_ttl:
-
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"stock", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
+@borg.on(admin_cmd(pattern=f"stock", outgoing=True))
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.5
-
     animation_ttl = range(0, 11)
-
-    input_str = event.pattern_match.group(1)
-
-    if input_str == "stock":
-
-        await event.edit(input_str)
-
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "stock":
+    await event.edit("stock")
+    animation_chars = [
         
             "`Connessione a Symbian OS...`",
             "`Inizializza Symbian OS Login.`",
@@ -278,33 +228,21 @@ async def _(event):
             "`Welcome...\n\nStock OS: Symbian OS\nCurrent OS: Symbian OS`\n\n**My PC Specs:**\n\n **CPU:** __2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)__\n\n**Graphics:** __Nvidia GeForce GTX 1080 OC (8GB GDDR5X)__\n\n**RAM:** __32GB DDR4 (2,666MHz)__\n\n**Screen:** __17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync__\n\n**Storage:** __512GB PCIe SSD, 1TB HDD (7,200 rpm)__\n\n**Ports:** __2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity:** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera:** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size:** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__"
         ]
 
-        for i in animation_ttl:
-
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 11])
 
 
-@borg.on(admin_cmd(pattern=f"windows", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
+@borg.on(admin_cmd(pattern=f"windows", outgoing=True))
 async def _(event):
-
     if event.fwd_from:
-
         return
-
     animation_interval = 0.5
-
     animation_ttl = range(0, 11)
-
-    input_str = event.pattern_match.group(1)
-
-    if input_str == "windows":
-
-        await event.edit(input_str)
-
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+    #if input_str == "windows":
+    await event.edit("windows")
+    animation_chars = [
         
             "`Connessione a Windows 10...`",
             "`Inizializza Windows 10 Login.`",
@@ -319,8 +257,6 @@ async def _(event):
             "`Welcome...\n\nStock OS: Symbian OS\nCurrent OS: Windows 10`\n\n**My PC Specs:**\n\n **CPU:** __2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)__\n\n**Graphics:** __Nvidia GeForce GTX 1080 OC (8GB GDDR5X)__\n\n**RAM:** __32GB DDR4 (2,666MHz)__\n\n**Screen:** __17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync__\n\n**Storage:** __512GB PCIe SSD, 1TB HDD (7,200 rpm)__\n\n**Ports:** __2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity:** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera:** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size:** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__"
         ]
 
-        for i in animation_ttl:
-
+    for i in animation_ttl:
             await asyncio.sleep(animation_interval)
-
             await event.edit(animation_chars[i % 11])
