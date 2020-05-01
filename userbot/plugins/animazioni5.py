@@ -52,8 +52,7 @@ async def test(event):
 
 
 
-@borg.on(admin_cmd(pattern=f"smoon", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"smoon", outgoing=True))
 
 async def _(event):
 
@@ -65,11 +64,11 @@ async def _(event):
 
     animation_ttl = range(0, 101)
 
-    input_str = event.pattern_match.group(1)
+    #input_str = event.pattern_match.group(1)
 
-    if input_str == "smoon":
+    #if input_str == "smoon":
 
-        await event.edit(input_str)
+        await event.edit("smoon")
 
         animation_chars = [
 
@@ -91,8 +90,7 @@ async def _(event):
 
 
 
-@borg.on(admin_cmd(pattern=f"tmoon", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"tmoon", outgoing=True))
 
 async def _(event):
 
@@ -104,11 +102,11 @@ async def _(event):
 
     animation_ttl = range(0, 117)
 
-    input_str = event.pattern_match.group(1)
+    #input_str = event.pattern_match.group(1)
 
-    if input_str == "tmoon":
+    #if input_str == "tmoon":
 
-        await event.edit(input_str)
+        await event.edit("tmoon")
 
         animation_chars = [
 
@@ -151,4 +149,3 @@ async def _(event):
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 117])
-
