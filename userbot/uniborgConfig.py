@@ -110,14 +110,4 @@ if ENV:
 else:
     class Config(object):
         DB_URI = None
-
-
-
-    class Production(Config):
-    LOGGER = True
-
-
-    class Development(Config):
-    LOGGER = True
-    
         # Add your UniBorg Vars Here
