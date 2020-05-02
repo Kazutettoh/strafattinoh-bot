@@ -103,10 +103,21 @@ if ENV:
         YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
         #MongoDB
+        BOTLOG = os.environ.get("BOTLOG", None)
         MONGO_URI = os.environ.get("MONGO_URI", None)
         #Lydia API
         LYDIA_API = os.environ.get("LYDIA_API",None)
 else:
     class Config(object):
         DB_URI = None
+
+
+
+    class Production(Config):
+    LOGGER = False
+
+
+    class Development(Config):
+    LOGGER = True
+    
         # Add your UniBorg Vars Here
