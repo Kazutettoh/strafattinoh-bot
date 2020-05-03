@@ -14,12 +14,11 @@ CACHE = {}
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**I'M STUPID**"
 USER_BOT_WARN_ZERO = "**Stai spammando troppo, sei bloccato dal bot sono impegnato 👎** "
-USER_BOT_NO_WARN = ("[▬▬▬ ✪ BOT SECURITY ✪ ▬▬▬](tg://user?id=1133198248)\n\n"
+USER_BOT_NO_WARN = ("[▬▬▬▬ ✪ 𝗕𝗢𝗧 𝗦𝗘𝗖𝗨𝗥𝗜𝗧𝗬 ✪ ▬▬▬▬](tg://user?id=1133198248)\n\n"
                     "**Specifica il motivo perchè cerchi **"
                     f"{DEFAULTUSER} \n\n"
-                    "**Lascia il tuo tag e numero di telefono rispondo entro 24h **\n\n"
-                    "**Premi /start per scegliere il motivo della chat**\n\n"
-                    " ▬▬▬ ✪ ▬▬▬▬ ◆ ▬▬▬▬ ✪ ▬▬▬")
+                    "**Lascia il tuo tag e numero di telefono rispondo entro 24h, premi `/start` per scegliere il motivo della chat.**\n\n"
+                    " ▬▬▬▬ ✪ ▬▬▬▬ ◆ ▬▬▬▬ ✪ ▬▬▬▬")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
