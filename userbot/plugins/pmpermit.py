@@ -10,12 +10,11 @@ PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 CACHE = {}
 
-
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**I'M STUPID**"
 USER_BOT_WARN_ZERO = "**Stai spammando troppo, sei bloccato dal bot sono impegnato 👎**"
 USER_BOT_NO_WARN = ("[╚ »✪« ╝ SYSTEM BOT ╚ »✪« ╝](tg://user?id=1133198248)\n\n"
                     "**Specifica il motivo**\n**perchè cerchi** "f"{DEFAULTUSER}\n\n"
-                    "**Lascia il tuo tag e numero**\n**rispondo entro 24h.**\n**Premi`/start` scegli**\n**il motivo della chat.**\n\n"
+                    "**Lascia il tuo tag e numero,**\n**rispondo entro 24h.**\n**Premi `/start` e scegli**\n**il motivo della chat.**\n\n"
                     "▬▬▬ ✪ ▬▬ ◆ ▬▬ ✪ ▬▬▬")
 
 
@@ -144,7 +143,7 @@ if Var.PRIVATE_GROUP_ID is not None:
 
             return
           
-        if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4", "5")]):
+        if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4")]):
             return
 
         if not pmpermit_sql.is_approved(chat_id):
@@ -184,79 +183,3 @@ if Var.PRIVATE_GROUP_ID is not None:
         if chat_id in PREV_REPLY_MESSAGE:
             await PREV_REPLY_MESSAGE[chat_id].delete()
         PREV_REPLY_MESSAGE[chat_id] = r
-
-
-@borg.on(events.ChatAction(blacklist_chats=Config.UB_BLACK_LIST_CHAT))
-async def on_new_chat_action_message(event):
-    if Var.PRIVATE_GROUP_ID is None:
-        return
-    # logger.info(event.stringify())
-    chat_id = event.chat_id
-    message_id = event.action_message.id
-
-    if event.created or event.user_added:
-        added_by_users = event.action_message.action.users
-        if borg.uid in added_by_users:
-            added_by_user = event.action_message.from_id
-            # someone added me to chat
-            the_message = ""
-            the_message += "#MessageActionChatAddUser\n\n"
-            the_message += f"[User](tg://user?id={added_by_user}): `{added_by_user}`\n"
-            the_message += f"[Private Link](https://t.me/c/{chat_id}/{message_id})\n"
-            await event.client.send_message(
-                entity=Var.PRIVATE_GROUP_ID,
-                message=the_message,
-                # reply_to=,
-                # parse_mode="html",
-                link_preview=False,
-                # file=message_media,
-                silent=True
-            )
-
-
-
-@borg.on(events.Raw())
-async def on_new_channel_message(event):
-    if Var.PRIVATE_GROUP_ID is None:
-        return
-    try:
-        if tgbot is None:
-            return
-    except Exception as e:
-        logger.info(str(e))
-        return
-    # logger.info(event.stringify())
-    if isinstance(event, types.UpdateChannel):
-        channel_id = event.channel_id
-        message_id = 2
-        # someone added me to channel
-        # TODO: https://t.me/TelethonChat/153947
-        the_message = ""
-        the_message += "#MessageActionChatAddUser\n\n"
-        # the_message += f"[User](tg://user?id={added_by_user}): `{added_by_user}`\n"
-        the_message += f"[Private Link](https://t.me/c/{channel_id}/{message_id})\n"
-        await borg.send_message(
-            entity=Var.PRIVATE_GROUP_ID,
-            message=the_message,
-            # reply_to=,
-            # parse_mode="html",
-            link_preview=False,
-            # file=message_media,
-            silent=True
-        )
-
- 
-
-
-
-CMD_HELP.update({
-    "pmpermit":
-    "\
-.approve\
-\nUsage: Approves the mentioned/replied person to PM.\
-\n\n.block\
-\nUsage: Blocks the person.\
-\n\n.listapm\
-\nUsage: To list the all approved users.\
-"
-})            
