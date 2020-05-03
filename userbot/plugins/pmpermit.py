@@ -14,10 +14,9 @@ CACHE = {}
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**I'M STUPID**"
 USER_BOT_WARN_ZERO = "**Stai spammando troppo, sei bloccato dal bot sono impegnato 👎** "
-USER_BOT_NO_WARN = ("[▬▬▬▬ ✪ 𝗕𝗢𝗧 𝗦𝗘𝗖𝗨𝗥𝗜𝗧𝗬 ✪ ▬▬▬▬](tg://user?id=1133198248)\n\n"
-                    "**Specifica il motivo perchè cerchi **"
-                    f"{DEFAULTUSER} \n\n"
-                    "**Lascia il tuo tag e numero di telefono rispondo entro 24h, premi `/start` per scegliere il motivo della chat.**\n\n"
+USER_BOT_NO_WARN = ("[╚ »✪« ╝ SYSTEM BOT ╚ »✪« ╝](tg://user?id=1133198248)\n\n"
+                    "**Specifica il motivo**\n**perchè cerchi**"f"{DEFAULTUSER} \n\n"
+                    "**Lascia il tuo tag e numero**\n**rispondo entro 24h, premi** `/start`\n**per scegliere il motivo della chat.**\n\n"
                     " ▬▬▬▬ ✪ ▬▬▬▬ ◆ ▬▬▬▬ ✪ ▬▬▬▬")
 
 
@@ -81,7 +80,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         if event.fwd_from:
             return
         approved_users = pmpermit_sql.get_all_approved()
-        APPROVED_PMs = "ℹ️ USER APPROVATI ℹ️\n"
+        APPROVED_PMs = "ℹ️ ᴜꜱᴇʀ ᴀᴘᴘʀᴏᴠᴀᴛɪ ℹ️\n"
         if len(approved_users) > 0:
             for a_user in approved_users:
                 if a_user.reason:
@@ -89,7 +88,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 else:
                     APPROVED_PMs += f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id})\n"
         else:
-            APPROVED_PMs = "**Lista vuota**"
+            APPROVED_PMs = "ʟɪꜱᴛᴀ ᴠᴜᴏᴛᴀ"
         if len(APPROVED_PMs) > 4095:
             with io.BytesIO(str.encode(APPROVED_PMs)) as out_file:
                 out_file.name = "approved.pms.text"
