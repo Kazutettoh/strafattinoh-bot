@@ -12,13 +12,13 @@ CACHE = {}
 
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**I'M STUPID**"
-USER_BOT_WARN_ZERO = "**Stai spammando troppo sei bloccato dal bot. Io sono impegnato 👎** "
-USER_BOT_NO_WARN = ("[▬▬▬ ✪ SYSTEM SECURITY BOT ✪ ▬▬▬](tg://user?id=1133198248)\n\n"
+USER_BOT_WARN_ZERO = "**Stai spammando troppo, sei bloccato dal bot sono impegnato 👎** "
+USER_BOT_NO_WARN = ("[▬▬▬ ✪ BOT SECURITY ✪ ▬▬▬](tg://user?id=1133198248)\n\n"
                     "**Specifica il motivo perchè cerchi **"
                     f"{DEFAULTUSER} \n\n"
                     "**Lascia il tuo tag e numero di telefono rispondo entro 24h **\n\n"
                     "**Premi /start per scegliere il motivo della chat**\n\n"
-                    "▬▬▬▬ ✪ ▬▬▬▬ ◆ ▬▬▬▬ ✪ ▬▬▬▬")
+                    " ▬▬▬ ✪ ▬▬▬▬ ◆ ▬▬▬▬ ✪ ▬▬▬")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
@@ -30,10 +30,11 @@ if Var.PRIVATE_GROUP_ID is not None:
         firstname = replied_user.user.first_name
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
-        if event.is_private:
-            if not pmpermit_sql.is_approved(chat.id):
-                if chat.id in PM_WARNS:
-                    del PM_WARNS[chat.id]
+        if Var.PRIVATE_GROUP_ID is not None:
+            if event.is_private:
+                if not pmpermit_sql.is_approved(chat.id):
+                    if chat.id in PM_WARNS:
+                        del PM_WARNS[chat.id]
                 if chat.id in PREV_REPLY_MESSAGE:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
@@ -62,19 +63,18 @@ if Var.PRIVATE_GROUP_ID is not None:
     async def block_p_m(event):
         if event.fwd_from:
             return
-        replied_user = await event.client(GetFullUserRequest(event.chat_id))
-        firstname = replied_user.user.first_name
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
-        if event.is_private:
-            if pmpermit_sql.is_approved(chat.id):
-                pmpermit_sql.disapprove(chat.id)
-                await event.edit(" ███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ \n\nScusa, non puoi inviarmi messaggi..[{}](tg://user?id={})".format(firstname, chat.id))
-                await asyncio.sleep(3)
-                await event.client(functions.contacts.BlockRequest(chat.id))
+        if Var.PRIVATE_GROUP_ID is not None:
+            if event.is_private:
+                if pmpermit_sql.is_approved(chat.id):
+                    pmpermit_sql.disapprove(chat.id)
+                    await event.edit(" ███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ \n\nScusa, non puoi inviarmi messaggi..[{}](tg://user?id={})".format(firstname, chat.id))
+                    await asyncio.sleep(3)
+                    await event.client(functions.contacts.BlockRequest(chat.id))
 
 
-    @command(pattern="^.listapprovati")
+    @command(pattern="^.listapm")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -116,7 +116,11 @@ if Var.PRIVATE_GROUP_ID is not None:
             return
 
         message_text = event.message.message
-        chat_id = event.from_id
+        message_media = event.message.media
+        message_id = event.message.id
+        message_to_id = event.message.to_id
+        chat_id = event.chat_id
+        # logger.info(chat_id)
 
         current_message_text = message_text.lower()
         if USER_BOT_NO_WARN == message_text:
