@@ -21,7 +21,6 @@ USER_BOT_NO_WARN = ("[▬▬▬ ✪ BOT SECURITY ✪ ▬▬▬](tg://user?id=113
                     " ▬▬▬ ✪ ▬▬▬▬ ◆ ▬▬▬▬ ✪ ▬▬▬")
 
 
-if Var.PRIVATE_GROUP_ID is not None:
     @command(pattern="^.approva ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
@@ -60,9 +59,11 @@ if Var.PRIVATE_GROUP_ID is not None:
 
 
     @command(pattern="^.block ?(.*)")
-    async def block_p_m(event):
+    async def approve_p_m(event):
         if event.fwd_from:
             return
+        replied_user = await event.client(GetFullUserRequest(event.chat_id))
+        firstname = replied_user.user.first_name    
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if Var.PRIVATE_GROUP_ID is not None:
