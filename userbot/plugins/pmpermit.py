@@ -248,20 +248,8 @@ async def on_new_channel_message(event):
             silent=True
         )
 
+ 
 
-@borg.on(events.Raw())
-async def _(event):
-    if Var.PRIVATE_GROUP_ID is None:
-        return
-    if tgbot is None:
-        return
-    logger.info(event.stringify())
-    if tgbot is not None:
- @tgbot.on(events.Raw())
- async def _(event):
-    if Var.PRIVATE_GROUP_ID is None:
-       return
-    logger.info(event.stringify())
 
 
 CMD_HELP.update({
