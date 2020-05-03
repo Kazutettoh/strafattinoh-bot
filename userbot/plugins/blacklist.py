@@ -8,11 +8,11 @@ Available Commands:
 .rmblacklist"""
 import asyncio
 import re
-import userbot.plugins.sql_helper.blacklist_sql as sql
+import userbot.plugins.sql_helper.blacklist_sql as blacklist_sql
 from telethon import events, utils
 from telethon.tl import types, functions
 from userbot.utils import admin_cmd
-
+from userbot import CMD_HELP
 
 @borg.on(events.NewMessage(incoming=True))
 async def on_new_message(event):
@@ -73,3 +73,4 @@ async def on_delete_blacklist(event):
         if sql.rm_from_blacklist(event.chat_id, trigger.lower()):
             successful += 1
     await event.edit(f"Removed {successful} / {len(to_unblacklist)} from the blacklist")
+

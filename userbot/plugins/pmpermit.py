@@ -1,5 +1,6 @@
 import asyncio
 import io
+import userbot.plugins.sql_helper.no_log_pms_sql as no_log_pms_sql
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon import events, errors, functions, types
@@ -136,20 +137,12 @@ if Var.PRIVATE_GROUP_ID is not None:
             CACHE[event.from_id] = sender
 
         if chat_id == bot.uid:
-
             # don't log Saved Messages
-
             return
-
-
         if sender.bot:
-
             # don't log bots
-
             return
-
         if sender.verified:
-
             # don't log verified accounts
 
             return
@@ -196,6 +189,81 @@ if Var.PRIVATE_GROUP_ID is not None:
         PREV_REPLY_MESSAGE[chat_id] = r
 
 
+@borg.on(events.ChatAction(blacklist_chats=Config.UB_BLACK_LIST_CHAT))
+async def on_new_chat_action_message(event):
+    if Var.PRIVATE_GROUP_ID is None:
+        return
+    # logger.info(event.stringify())
+    chat_id = event.chat_id
+    message_id = event.action_message.id
+
+    if event.created or event.user_added:
+        added_by_users = event.action_message.action.users
+        if borg.uid in added_by_users:
+            added_by_user = event.action_message.from_id
+            # someone added me to chat
+            the_message = ""
+            the_message += "#MessageActionChatAddUser\n\n"
+            the_message += f"[User](tg://user?id={added_by_user}): `{added_by_user}`\n"
+            the_message += f"[Private Link](https://t.me/c/{chat_id}/{message_id})\n"
+            await event.client.send_message(
+                entity=Var.PRIVATE_GROUP_ID,
+                message=the_message,
+                # reply_to=,
+                # parse_mode="html",
+                link_preview=False,
+                # file=message_media,
+                silent=True
+            )
+
+
+
+@borg.on(events.Raw())
+async def on_new_channel_message(event):
+    if Var.PRIVATE_GROUP_ID is None:
+        return
+    try:
+        if tgbot is None:
+            return
+    except Exception as e:
+        logger.info(str(e))
+        return
+    # logger.info(event.stringify())
+    if isinstance(event, types.UpdateChannel):
+        channel_id = event.channel_id
+        message_id = 2
+        # someone added me to channel
+        # TODO: https://t.me/TelethonChat/153947
+        the_message = ""
+        the_message += "#MessageActionChatAddUser\n\n"
+        # the_message += f"[User](tg://user?id={added_by_user}): `{added_by_user}`\n"
+        the_message += f"[Private Link](https://t.me/c/{channel_id}/{message_id})\n"
+        await borg.send_message(
+            entity=Var.PRIVATE_GROUP_ID,
+            message=the_message,
+            # reply_to=,
+            # parse_mode="html",
+            link_preview=False,
+            # file=message_media,
+            silent=True
+        )
+
+
+@borg.on(events.Raw())
+async def _(event):
+    if Var.PRIVATE_GROUP_ID is None:
+        return
+    if tgbot is None:
+        return
+    logger.info(event.stringify())
+    if tgbot is not None:
+ @tgbot.on(events.Raw())
+ async def _(event):
+    if Var.PRIVATE_GROUP_ID is None:
+       return
+    logger.info(event.stringify())
+
+
 CMD_HELP.update({
     "pmpermit":
     "\
@@ -203,7 +271,7 @@ CMD_HELP.update({
 \nUsage: Approves the mentioned/replied person to PM.\
 \n\n.block\
 \nUsage: Blocks the person.\
-\n\n.listapproved\
+\n\n.listapm\
 \nUsage: To list the all approved users.\
 "
 })            
