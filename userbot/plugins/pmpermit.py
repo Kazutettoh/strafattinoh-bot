@@ -3,7 +3,7 @@ import io
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon import events, errors, functions, types
-from userbot import ALIVE_NAME, LESS_SPAMMY
+from userbot import ALIVE_NAME, LESS_SPAMMY, CMD_HELP
 from userbot.utils import admin_cmd
 
 PM_WARNS = {}
@@ -21,6 +21,7 @@ USER_BOT_NO_WARN = ("[▬▬▬ ✪ BOT SECURITY ✪ ▬▬▬](tg://user?id=113
                     " ▬▬▬ ✪ ▬▬▬▬ ◆ ▬▬▬▬ ✪ ▬▬▬")
 
 
+if Var.PRIVATE_GROUP_ID is not None:
     @command(pattern="^.approva ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
@@ -193,3 +194,16 @@ USER_BOT_NO_WARN = ("[▬▬▬ ✪ BOT SECURITY ✪ ▬▬▬](tg://user?id=113
         if chat_id in PREV_REPLY_MESSAGE:
             await PREV_REPLY_MESSAGE[chat_id].delete()
         PREV_REPLY_MESSAGE[chat_id] = r
+
+
+CMD_HELP.update({
+    "pmpermit":
+    "\
+.approve\
+\nUsage: Approves the mentioned/replied person to PM.\
+\n\n.block\
+\nUsage: Blocks the person.\
+\n\n.listapproved\
+\nUsage: To list the all approved users.\
+"
+})            
