@@ -64,14 +64,16 @@ if bool(ENV):
         pass
 
     # Userbot logging feature switch.
-    BOTLOG = sb(os.environ.get("BOTLOG", "False"))
+    BOTLOG = sb(os.environ.get("BOTLOG", "True"))
 
     # Bleep Blop, this is a bot ;)
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
-
+    # Heroku Credentials for updater.
+    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
     # Console verbose logging
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
-
+    
     # SQL Database URI
     DB_URI = os.environ.get("DATABASE_URL", None)
 
@@ -98,9 +100,9 @@ if bool(ENV):
 
     # Default .alive name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
-    
+    AUTONAME = os.environ.get("AUTONAME", None)
     LESS_SPAMMY = os.environ.get("LESS_SPAMMY", True)
-
+    
     # Time & Date - Country and Time Zone
     COUNTRY = str(os.environ.get("COUNTRY", ""))
 
