@@ -1,7 +1,5 @@
 """
 Support chatbox for pmpermit.
-Used by incoming messages with trigger as /start
-Will not work for already approved people.
 """
 import asyncio
 import io 
@@ -11,7 +9,6 @@ import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon import events, errors, functions, types
 from userbot import ALIVE_NAME, LESS_SPAMMY
 from userbot.utils import admin_cmd
-
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**I'M STUPID**"
 PREV_REPLY_MESSAGE = {}
@@ -26,13 +23,13 @@ async def _(event):
         if event.fwd_from:
             return
         if event.is_private:
-         Nudas = ("__Please, indica il tuo sesso.__\n"
+         Nudas = ("Please, indica il tuo sesso.\n"
                   "`1`. Donna\n"
                   "`2`. Uomo\n"
                   "`3`. Altro\n")
          PM = ("Questo è il menù avviabile di"
                f"{DEFAULTUSER}.\n"
-               "__Indica il motivo perchè sei qui__\n"
+               "Indica il motivo perchè sei qui\n"
                "**Scegli tra uno di questi motivi:**\n\n"
                "`1`. Per chattare con me\n"
                "`2`. Per spammare in chat.\n"
@@ -42,8 +39,8 @@ async def _(event):
                 "**⚠️ Verrai bloccato dal bot se continui a spammare ti avviso ⚠️**\n\n"
                 "Premi `/start` per tornare al menù principale")
          TWO = (" `███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ `\n\n**Ti avevo avvisato vai a dare fastidio ad altri,sei stato bloccato e segnalato.**")  
-         FOUR = ("`Va bene,chiedi pure ma scrivi tutto in un messaggio non ci sono.Ti risponderò al più presto.`\n**Non spammare se non vuoi essere bloccato dal bot.**")
-         LWARN = ("**⚠️ Ultimo avviso ⚠️ Non inviare un altro messeggio altrimenti verrai bloccato e segnalato. Attendi ti risponderò al più presto.**\nPremi `/start` per tornare al menù principale.")
+         FOUR = ("Chiedi pure ma scrivi tutto in un messaggio non ci sono ti risponderò al più presto.\n**Non spammare se non vuoi essere bloccato dal bot.**")
+         LWARN = ("**⚠️ Ultimo avviso ⚠️ Non inviare un altro messeggio altrimenti verrai bloccato dal bot attendi ti risponderò al più presto.**\nPremi `/start` per tornare al menù principale.")
      
         async with borg.conversation(chat) as conv:
          await borg.send_message(chat, PM)
@@ -92,7 +89,7 @@ async def _(event):
                          await asyncio.sleep(3)
                          await event.client(functions.contacts.BlockRequest(chat_id))
              elif x == "2":
-                 await borg.send_message(chat, "**Sei gay che vuoi inviare nudes.\nMi dispiace, non mi servono. Ti rispondo quando sono online.**")
+                 await borg.send_message(chat, "**Sei gay che vuoi inviarmi nudes.\nMi dispiace, non mi servono. Ti rispondo quando sarò online forse.**")
                  response = await conv.get_response(chat)
                  if not response.text == "/start":
                      await borg.send_message(chat, LWARN)

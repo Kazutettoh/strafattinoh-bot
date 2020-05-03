@@ -36,7 +36,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
                 pmpermit_sql.approve(chat.id, reason)
-                await event.edit("User approvato [{}](tg://user?id={})".format(firstname, chat.id))
+                await event.edit("ᴜꜱᴇʀ ᴀᴘᴘʀᴏᴠᴀᴛᴏ [{}](tg://user?id={})".format(firstname, chat.id))
                 await asyncio.sleep(3)
                 await event.delete()
 
@@ -50,7 +50,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             if not pmpermit_sql.is_approved(chat.id):
                 if not chat.id in PM_WARNS:
                     pmpermit_sql.approve(chat.id, "outgoing")
-                    bruh = "**🆕 USER IN LIST❕**"
+                    bruh = "**🆕 ᴜꜱᴇʀ ❕**"
                     rko = await borg.send_message(event.chat_id, bruh)
                     await asyncio.sleep(3)
                     await rko.delete()
@@ -78,7 +78,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         if event.fwd_from:
             return
         approved_users = pmpermit_sql.get_all_approved()
-        APPROVED_PMs = "ℹ️ ᴜꜱᴇʀ ᴀᴘᴘʀᴏᴠᴀᴛɪ ℹ️\n"
+        APPROVED_PMs = "ℹ️ ᴜꜱᴇʀ ᴀᴘᴘʀᴏᴠᴀᴛɪ ℹ️\n\n"
         if len(approved_users) > 0:
             for a_user in approved_users:
                 if a_user.reason:

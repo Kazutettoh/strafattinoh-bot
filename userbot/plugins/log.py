@@ -28,20 +28,10 @@ async def log(log_text):
             textx = user + log_text.pattern_match.group(1)
             await bot.send_message(BOTLOG_CHATID, textx)
         else:
-            await log_text.edit("`What am I supposed to log?`")
+            await log_text.edit("Inserisci cosa inviare log")
             return
-        await log_text.edit("`Logged Successfully`")
+        await log_text.edit("Log eseguito")
     else:
-        await log_text.edit("`This feature requires Logging to be enabled!`")
+        await log_text.edit("Serve il log attivo per funzionare!")
     await sleep(2)
     await log_text.delete()
-
-
-    
-@register(outgoing=True, pattern="^.kickme$")
-async def kickme(leave):
-    """ Basically it's .kickme command """
-    await leave.edit("Nope, no, no, I go away")
-    await leave.client.kick_participant(leave.chat_id, 'me')
-
-
