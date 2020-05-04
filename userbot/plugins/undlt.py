@@ -13,6 +13,6 @@ async def _(event):
         for i in a:
           await event.reply(i.original.action.message)
     else:
-        await event.edit("You need administrative permissions in order to do this command")
+        await event.edit("Non hai i permessi per usare questo comando")
         await asyncio.sleep(3)
         await event.delete()

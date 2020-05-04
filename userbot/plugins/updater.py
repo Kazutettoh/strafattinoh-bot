@@ -136,7 +136,7 @@ async def updater(message):
                     if i.name == Var.HEROKU_APP_NAME:
                         heroku_app = i
                 if heroku_app is None:
-                    await message.edit("Invalid APP Name. Please inserisci il nome del bot in heroku, Var `HEROKU_APP_NAME.`")
+                    await message.edit("Invalid APP Name. Inserisci il nome del bot in heroku, Var `HEROKU_APP_NAME.`")
                     return
                 heroku_git_url = heroku_app.git_url.replace(
                     "https://",
@@ -167,9 +167,7 @@ def generate_change_log(git_repo, diff_marker):
 
 async def deploy_start(tgbot, message, refspec, remote):
     await message.edit(RESTARTING_APP)
-    await message.edit("Update in corso...Attendi 5 minuti e premi `.test`.")
+    await message.edit("Update in corso...Online tra 4 minuti\nVedi se online con `.test`")
     await remote.push(refspec=refspec)
     await tgbot.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
-
-    

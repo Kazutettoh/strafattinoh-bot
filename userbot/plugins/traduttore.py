@@ -1,5 +1,5 @@
 """ Google Translate
-Available Commands:
+Commands:
 .tr LanguageCode as reply to a message
 .tr LangaugeCode | text to translate"""
 
@@ -23,7 +23,7 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await event.edit("`.tr LanguageCode` as reply to a message")
+        await event.edit("`.tr LanguageCode` in risposta a messaggi")
         return
     text = emoji.demojize(text.strip())
     lan = lan.strip()
@@ -33,7 +33,7 @@ async def _(event):
         after_tr_text = translated.text
         # TODO: emojify the :
         # either here, or before translation
-        output_str = """**TRANSLATED** from {} to {}
+        output_str = """**TRADUZIONE** da {} a {}
 {}""".format(
             translated.src,
             lan,

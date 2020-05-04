@@ -1,5 +1,5 @@
-""" Google Text to Speech
-Available Commands:
+""" Google Text to Speak
+Commands:
 .tts LanguageCode as reply to a message
 .tts LangaugeCode | text to speak"""
 
@@ -9,7 +9,7 @@ import subprocess
 from datetime import datetime
 from gtts import gTTS
 from userbot.utils import admin_cmd
-
+from userbot.uniborgConfig import Config
 
 @borg.on(admin_cmd(pattern="tts (.*)"))
 async def _(event):
@@ -24,7 +24,7 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await event.edit("Invalid Syntax. Module stopping.")
+        await event.edit("Syntax invalida. Module in pausa.")
         return
     text = text.strip()
     lan = lan.strip()
