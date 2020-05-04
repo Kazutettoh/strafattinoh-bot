@@ -1,7 +1,7 @@
-# credits: SNAPDRAGON (@s_n_a_p_s)
 from telethon import events
 import subprocess
 import os
+from heroku_config import Var
 from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotModifiedError
 import io
 import asyncio

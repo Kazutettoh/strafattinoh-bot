@@ -1,5 +1,6 @@
 from coffeehouse.lydia import LydiaAI
 from coffeehouse.api import API
+from heroku_config import Var
 import asyncio
 from telethon import events
 

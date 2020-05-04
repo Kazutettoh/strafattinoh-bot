@@ -12,6 +12,7 @@ from pySmartDL import SmartDL
 from telethon import events
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
+from userbot.uniborgConfig import Config
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon import events

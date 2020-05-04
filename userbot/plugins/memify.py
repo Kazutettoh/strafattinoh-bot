@@ -28,6 +28,7 @@ InputStickerSetShortName,
 MessageMediaPhoto
 )
 from userbot import CMD_HELP, ALIVE_NAME
+from userbot.uniborgConfig import Config
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 

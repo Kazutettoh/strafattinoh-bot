@@ -13,6 +13,7 @@ import time
 from datetime import datetime
 from telethon import events
 from telethon.tl.types import DocumentAttributeVideo
+from heroku_config import Var
 
 GIT_TEMP_DIR = "./userbot/temp/"
 

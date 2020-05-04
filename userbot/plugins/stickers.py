@@ -28,6 +28,7 @@ from telethon.tl.types import (
 )
 from userbot.utils import admin_cmd
 from userbot import ALIVE_NAME
+from userbot.uniborgConfig import Config
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 FILLED_UP_DADDY = "Invalid pack selected."

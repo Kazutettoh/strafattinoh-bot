@@ -1,7 +1,6 @@
-"""Update UserBot code (for Xtra-Telegram)
+"""Update UserBot code
 Syntax: .update
-\nAll Credits goes to © @Three_Cube_TeKnoways
-\nFor this awasome plugin.\nPorted from PpaperPlane Extended"""
+"""
 
 from os import remove
 from os import execl
@@ -30,7 +29,7 @@ from telethon.tl.types import MessageEntityMentionName
 from telethon import events
 
 from userbot.utils import admin_cmd
-
+from heroku_config import Var
 
 from contextlib import suppress
 import os

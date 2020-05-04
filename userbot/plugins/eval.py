@@ -11,7 +11,7 @@ import asyncio
 import sys
 import io
 from uniborg.util import admin_cmd
-
+from userbot.uniborgConfig import Config
 
 @borg.on(admin_cmd("eval", allow_sudo=True))
 @borg.on(admin_cmd("eval"))

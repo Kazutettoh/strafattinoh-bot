@@ -12,7 +12,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-"""Remove.BG Plugin for @UniBorg
+"""Remove.BG Plugin
 Syntax: .rmbg https://link.to/image.extension
 Syntax: .rmbg as reply to a media"""
 import asyncio
@@ -21,6 +21,7 @@ import io
 import os
 import requests
 from telethon import events
+from userbot.uniborgConfig import Config
 from userbot.utils import progress, admin_cmd
 
 

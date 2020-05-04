@@ -5,6 +5,7 @@ import io
 import requests
 from telethon import events
 from userbot.utils import admin_cmd
+from userbot.uniborgConfig import Config
 
 
 @borg.on(admin_cmd("screencapture (.*)"))

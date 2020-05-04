@@ -5,6 +5,7 @@ import subprocess
 import time
 import json
 import sys
+from heroku_config import Var
 
 @command(pattern="^.labstack ?(.*)")
 async def labstack(event):

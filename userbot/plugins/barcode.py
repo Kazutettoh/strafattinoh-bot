@@ -1,6 +1,5 @@
 """BarCode Generator
-Command .barcode (your text)
-By @snappy101
+Command .barcode
 """
 
 import asyncio
@@ -10,6 +9,7 @@ import time
 from barcode.writer import ImageWriter
 from datetime import datetime
 from uniborg.util import admin_cmd
+from userbot.uniborgConfig import Config
 
 
 @borg.on(admin_cmd(pattern="barcode ?(.*)"))
@@ -19,7 +19,7 @@ async def _(event):
     await event.edit("...")
     start = datetime.now()
     input_str = event.pattern_match.group(1)
-    message = "SYNTAX: `.barcode <long text to include>`"
+    message = "SYNTAX: `.barcode <testo>`"
     reply_msg_id = event.message.id
     if input_str:
         message = input_str
@@ -41,7 +41,7 @@ async def _(event):
         else:
             message = previous_message.message
     else:
-        message = "SYNTAX: `.barcode <long text to include>`"
+        message = "SYNTAX: `.barcode <testo>`"
     bar_code_type = "code128"
     try:
         bar_code_mode_f = barcode.get(bar_code_type, message, writer=ImageWriter())
@@ -58,6 +58,6 @@ async def _(event):
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await event.edit("Created BarCode in {} seconds".format(ms))
+    await event.edit("Creato BarCode in {} sec".format(ms))
     await asyncio.sleep(5)
     await event.delete()

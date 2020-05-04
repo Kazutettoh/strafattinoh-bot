@@ -60,7 +60,7 @@ async def _(event):
     animation_ttl = range(0, 11)
     #input_str = event.pattern_match.group(1)
     #if input_str == "avast1":
-    await event.edit(input_str)
+    await event.edit("avast1")
     animation_chars = [
         
             "`Downloading File..`",
