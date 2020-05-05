@@ -1,16 +1,14 @@
-
+import asyncio
+import time
 from asyncio import sleep
-from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID, bot
-from userbot.utils import register
+from os import remove
+from datetime import datetime
+from telethon import events
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
-from userbot.utils import admin_cmd
-from os import remove
-from telethon import events
-import asyncio
-from datetime import datetime
-import time
+from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID, bot
 from userbot.utils import register, errors_handler, admin_cmd
+from userbot.uniborgConfig import Config
 
 BOTLOG = True
 BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
