@@ -35,7 +35,7 @@ async def cmd_list(event):
                 await event.edit(input_str + "plugin non valido!")
         else:
             help_string = f"""Menù helper di {DEFAULTUSER} \n\n
-Helper per i comandi\nPremi .help plugin_name, in caso non sia qui."""
+`Helper per i comandi`\n__Premi .help plugin_name, in caso non sia qui.__"""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
