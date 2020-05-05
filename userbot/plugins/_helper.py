@@ -22,15 +22,15 @@ async def cmd_list(event):
                 await event.edit(string)
         elif input_str:
             if input_str in CMD_LIST:
-                string = "**Comandi in {}:**\n".format(input_str)
+                string = "Comandi in {}:\n".format(input_str)
                 for i in CMD_LIST[input_str]:
                     string += "    " + i
                     string += "\n"
                 await event.edit(string)
             else:
-                await event.edit(input_str + "**plugin non valido!**")
+                await event.edit(input_str + "plugin non valido!")
         else:
-            help_string = "**Userbot Helper Creato da @IOIIIOIIIOI**\n**Premi .help plugin_name per vedere i comandi.**"
+            help_string = "Userbot Helper Creato da @IOIIIOIIIOI\nPremi .help plugin_name per vedere i comandi."
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
