@@ -6,7 +6,6 @@ from platform import uname
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
 
-
 @command(pattern="^.help ?(.*)")
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -35,7 +34,8 @@ async def cmd_list(event):
             else:
                 await event.edit(input_str + "plugin non valido!")
         else:
-            help_string = f"""Menù helper di {DEFAULTUSER}"""
+            help_string = f"""Menù helper di {DEFAULTUSER} \n\n
+Helper per i comandi\nPremi .help plugin_name, in caso non sia qui."""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
