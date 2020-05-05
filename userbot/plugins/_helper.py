@@ -1,9 +1,11 @@
-from userbot import CMD_LIST
-from userbot import ALIVE_NAME
+import asyncio
+from heroku_config import Var
+from userbot import ALIVE_NAME, CMD_LIST
 from userbot.utils import admin_cmd
 from platform import uname
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@mrconfused"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "I'M STUPID"
+
 
 @command(pattern="^.help ?(.*)")
 async def cmd_list(event):
@@ -13,7 +15,7 @@ async def cmd_list(event):
         if tgbotusername is None or input_str == "text":
             string = ""
             for i in CMD_LIST:
-                string += "👉 " + i + "\n"
+                string += "ℹ️ " + i + "\n"
                 for iter_list in CMD_LIST[i]:
                     string += "    `" + str(iter_list) + "`"
                     string += "\n"
@@ -25,16 +27,15 @@ async def cmd_list(event):
                 await event.edit(string)
         elif input_str:
             if input_str in CMD_LIST:
-                string = "Commands found in {}:\n".format(input_str)
+                string = "Comandi in {}:\n".format(input_str)
                 for i in CMD_LIST[input_str]:
                     string += "    " + i
                     string += "\n"
                 await event.edit(string)
             else:
-                await event.edit(input_str + " is not a valid plugin!")
+                await event.edit(input_str + "plugin non valido!")
         else:
-            help_string = f"""Userbot Helper.. Provided by {DEFAULTUSER} \n\n
-`Userbot Helper to reveal all the commands`\n__Do .help plugin_name for commands, in case popup doesn't appear.__"""
+            help_string = f"""Menù helper di {DEFAULTUSER} \n\n"""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
