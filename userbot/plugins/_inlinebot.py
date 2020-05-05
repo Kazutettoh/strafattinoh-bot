@@ -3,6 +3,7 @@ import asyncio
 import json
 import random
 import re
+from heroku_config import Var
 from telethon import events, errors, custom
 from userbot import CMD_LIST
 import io

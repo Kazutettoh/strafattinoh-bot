@@ -1,3 +1,5 @@
+import asyncio
+from heroku_config import Var
 from userbot import CMD_LIST
 
 @command(pattern="^.help ?(.*)")
@@ -20,16 +22,15 @@ async def cmd_list(event):
                 await event.edit(string)
         elif input_str:
             if input_str in CMD_LIST:
-                string = "Commands found in {}:\n".format(input_str)
+                string = "**Comandi in {}:**\n".format(input_str)
                 for i in CMD_LIST[input_str]:
                     string += "    " + i
                     string += "\n"
                 await event.edit(string)
             else:
-                await event.edit(input_str + " is not a valid plugin!")
+                await event.edit(input_str + "**plugin non valido!**")
         else:
-            help_string = """Userbot Helper.. Creato da @IOIIIOIIIOI \n\n
-`Userbot Helper per i comandi`\n__Premi .help plugin_name, in caso non sia qui.__"""
+            help_string = "**Userbot Helper Creato da @IOIIIOIIIOI**\n**Premi .help plugin_name per vedere i comandi.**"
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
