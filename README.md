@@ -1,4 +1,4 @@
-# Krono-BotXY
+# >Strafattinoh-bot
 
 ***
 
